@@ -1,0 +1,148 @@
+2025-10-20 14:15:42 error: Authentication error: jwt expired
+2025-10-20 14:17:39 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:17:43 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:17:48 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:17:52 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-20 14:18:01 error: Authentication error: jwt expired
+2025-10-20 14:18:03 error: Authentication error: jwt expired
+2025-10-20 14:18:09 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-20 14:18:12 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:18:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:21:56 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:22:01 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-20 14:23:58 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-20 14:24:01 error: Authentication error: jwt expired
+2025-10-20 14:24:06 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:24:09 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:25:42 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:25:44 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:25:44 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:26:40 error: Login failed: User doctor@example.com has no role assigned
+2025-10-20 15:12:32 error: Authentication error: jwt expired
+2025-10-20 15:12:43 error: Authentication error: jwt expired
+2025-10-20 16:00:03 error: Authentication error: jwt expired
+2025-10-21 10:03:23 error: Authentication error: jwt expired
+2025-10-21 10:03:32 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 10:03:38 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:03:48 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:12 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:14 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:15 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:16 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:23 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:28 error: Authentication error: jwt expired
+2025-10-21 11:02:12 error: Authentication error: jwt expired
+2025-10-21 11:02:45 error: Authentication error: jwt expired
+2025-10-21 11:02:52 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:53 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:54 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:54 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:55 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:55 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:29 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:31 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:34 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:37 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:57 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:22 error: Authentication error: jwt expired
+2025-10-21 16:26:28 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:29 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:30 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:30 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:31 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:31 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:32 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:32 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:33 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:33 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:34 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:34 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:35 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:35 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:36 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:36 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:36 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:37 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:40 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:42 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:47 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:48 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:48 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:49 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:50 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:50 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:52 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:52 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:58 error: Authentication error: jwt expired
+2025-10-21 16:26:59 error: Authentication error: jwt expired
+2025-10-21 16:27:03 error: Authentication error: jwt expired
+2025-10-21 16:27:04 error: Authentication error: jwt expired
+2025-10-21 16:27:09 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:09 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:10 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:10 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:11 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:11 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:18 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:19 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:20 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:21 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:21 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:22 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:23 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:26 error: Authentication error: jwt expired
+2025-10-21 16:27:26 error: Authentication error: jwt expired
+2025-10-21 16:27:27 error: Authentication error: jwt expired
+2025-10-21 16:27:35 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:36 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:40 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:45 error: Authentication error: jwt expired
+2025-10-21 16:27:49 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:58 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:33:08 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:33:56 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:03 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:04 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:05 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:12 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:14 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:37:01 error: Login error: Expected "payload" to be a plain object.
+2025-10-21 16:37:03 error: Login error: Expected "payload" to be a plain object.
+2025-10-21 16:37:07 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:37:08 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:37:09 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:37:10 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:38:09 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:38:39 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:38:40 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 08:44:44 error: Authentication error: jwt expired
+2025-10-23 08:44:45 error: Authentication error: jwt expired
+2025-10-23 09:59:04 error: Authentication error: jwt expired
+2025-10-23 10:00:17 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:18 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:25 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:34 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:35 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:45 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 14:20:53 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 14:20:56 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 14:21:12 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-24 11:07:18 error: Authentication error: jwt expired
+2025-10-24 11:27:40 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:27:44 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:27:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:28:03 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:28:05 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:28:55 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:28:59 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:29:12 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:29:19 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:35:21 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:35:43 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:35:47 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:35:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 15:03:44 error: Authentication error: jwt expired
+2025-10-24 15:03:45 error: Authentication error: jwt expired
+2025-10-24 15:03:46 error: Authentication error: jwt expired

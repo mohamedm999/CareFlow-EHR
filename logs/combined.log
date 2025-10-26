@@ -1,0 +1,612 @@
+2025-10-10 12:27:30 info: Connected to MongoDB successfully
+2025-10-10 12:27:30 info: Roles and permissions seeded successfully
+2025-10-10 12:27:30 info: Server running on port 3000
+2025-10-10 15:04:22 info: Connected to MongoDB successfully
+2025-10-10 15:04:22 info: Roles and permissions seeded successfully
+2025-10-10 15:04:22 info: Server running on port 3000
+2025-10-14 22:53:16 info: Connected to MongoDB successfully
+2025-10-14 22:53:16 info: Roles and permissions seeded successfully
+2025-10-14 22:53:16 info: Server running on port 3000
+2025-10-16 08:53:28 info: Connected to MongoDB successfully
+2025-10-16 08:53:29 info: Roles and permissions seeded successfully
+2025-10-16 08:53:29 info: Server running on port 3000
+2025-10-17 11:24:00 info: Connected to MongoDB successfully
+2025-10-17 11:24:00 info: Roles and permissions seeded successfully
+2025-10-17 11:24:00 info: Server running on port 3000
+2025-10-17 11:26:56 info: Connected to MongoDB successfully
+2025-10-17 11:26:56 info: Roles and permissions seeded successfully
+2025-10-17 11:26:56 info: Server running on port 3000
+2025-10-20 09:05:32 info: Connected to MongoDB successfully
+2025-10-20 09:05:32 info: Roles and permissions seeded successfully
+2025-10-20 09:05:32 info: Server running on port 3000
+2025-10-20 09:17:56 info: Connected to MongoDB successfully
+2025-10-20 09:17:56 info: Roles and permissions seeded successfully
+2025-10-20 09:17:56 info: Server running on port 3000
+2025-10-20 14:15:35 info: Connected to MongoDB successfully
+2025-10-20 14:15:36 info: Roles and permissions seeded successfully
+2025-10-20 14:15:36 info: Server running on port 3000
+2025-10-20 14:15:42 error: Authentication error: jwt expired
+2025-10-20 14:17:39 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:17:43 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:17:48 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:17:52 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-20 14:18:01 error: Authentication error: jwt expired
+2025-10-20 14:18:03 error: Authentication error: jwt expired
+2025-10-20 14:18:09 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-20 14:18:12 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:18:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:21:02 info: Connected to MongoDB successfully
+2025-10-20 14:21:02 info: Roles and permissions seeded successfully
+2025-10-20 14:21:02 info: Server running on port 3000
+2025-10-20 14:21:56 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:22:01 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-20 14:22:10 info: Connected to MongoDB successfully
+2025-10-20 14:22:10 info: Roles and permissions seeded successfully
+2025-10-20 14:22:10 info: Server running on port 3000
+2025-10-20 14:23:31 info: Connected to MongoDB successfully
+2025-10-20 14:23:31 info: Roles and permissions seeded successfully
+2025-10-20 14:23:31 info: Server running on port 3000
+2025-10-20 14:23:58 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-20 14:24:01 error: Authentication error: jwt expired
+2025-10-20 14:24:06 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:24:09 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:25:11 info: Connected to MongoDB successfully
+2025-10-20 14:25:11 info: Roles and permissions seeded successfully
+2025-10-20 14:25:11 info: Server running on port 3000
+2025-10-20 14:25:33 info: Connected to MongoDB successfully
+2025-10-20 14:25:33 info: Roles and permissions seeded successfully
+2025-10-20 14:25:33 info: Server running on port 3000
+2025-10-20 14:25:42 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:25:44 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:25:44 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-20 14:26:21 info: Connected to MongoDB successfully
+2025-10-20 14:26:21 info: Roles and permissions seeded successfully
+2025-10-20 14:26:21 info: Server running on port 3000
+2025-10-20 14:26:40 info: Login attempt for email: doctor@example.com
+2025-10-20 14:26:40 error: Login failed: User doctor@example.com has no role assigned
+2025-10-20 14:28:32 info: Connected to MongoDB successfully
+2025-10-20 14:28:32 info: Roles and permissions seeded successfully
+2025-10-20 14:28:32 info: Server running on port 3000
+2025-10-20 14:28:53 info: Login attempt for email: doctor@example.com
+2025-10-20 14:28:53 warn: Login failed: User not found - doctor@example.com
+2025-10-20 14:29:22 info: Login attempt for email: doctor@example.com
+2025-10-20 14:29:22 info: Login successful: doctor@example.com
+2025-10-20 14:29:24 info: Login attempt for email: doctor@example.com
+2025-10-20 14:29:24 info: Login successful: doctor@example.com
+2025-10-20 14:29:37 info: Login attempt for email: doctor@example.com
+2025-10-20 14:29:37 info: Login successful: doctor@example.com
+2025-10-20 14:29:38 info: Login attempt for email: doctor@example.com
+2025-10-20 14:29:38 info: Login successful: doctor@example.com
+2025-10-20 14:29:39 info: Login attempt for email: doctor@example.com
+2025-10-20 14:29:39 info: Login successful: doctor@example.com
+2025-10-20 14:29:39 info: Login attempt for email: doctor@example.com
+2025-10-20 14:29:39 info: Login successful: doctor@example.com
+2025-10-20 14:29:39 info: Login attempt for email: doctor@example.com
+2025-10-20 14:29:39 info: Login successful: doctor@example.com
+2025-10-20 14:29:40 info: Login attempt for email: doctor@example.com
+2025-10-20 14:29:40 info: Login successful: doctor@example.com
+2025-10-20 14:30:54 info: Connected to MongoDB successfully
+2025-10-20 14:30:55 info: Roles and permissions seeded successfully
+2025-10-20 14:30:55 info: Server running on port 3000
+2025-10-20 14:32:31 info: Connected to MongoDB successfully
+2025-10-20 14:32:31 info: Roles and permissions seeded successfully
+2025-10-20 14:32:31 info: Server running on port 3000
+2025-10-20 14:33:07 info: Connected to MongoDB successfully
+2025-10-20 14:33:07 info: Roles and permissions seeded successfully
+2025-10-20 14:33:07 info: Server running on port 3000
+2025-10-20 14:34:58 info: Appointment created: 68f63a823674b024756cf286 by user 68f63a183674b024756cf264
+2025-10-20 14:35:47 info: Connected to MongoDB successfully
+2025-10-20 14:35:47 info: Roles and permissions seeded successfully
+2025-10-20 14:35:47 info: Server running on port 3000
+2025-10-20 14:37:19 info: Connected to MongoDB successfully
+2025-10-20 14:37:20 info: Roles and permissions seeded successfully
+2025-10-20 14:37:20 info: Server running on port 3000
+2025-10-20 14:37:22 info: Connected to MongoDB successfully
+2025-10-20 14:37:22 info: Roles and permissions seeded successfully
+2025-10-20 14:37:22 info: Server running on port 3000
+2025-10-20 14:37:25 info: Connected to MongoDB successfully
+2025-10-20 14:37:25 info: Roles and permissions seeded successfully
+2025-10-20 14:37:25 info: Server running on port 3000
+2025-10-20 14:37:28 info: Connected to MongoDB successfully
+2025-10-20 14:37:28 info: Roles and permissions seeded successfully
+2025-10-20 14:37:28 info: Server running on port 3000
+2025-10-20 14:37:31 info: Connected to MongoDB successfully
+2025-10-20 14:37:31 info: Roles and permissions seeded successfully
+2025-10-20 14:37:31 info: Server running on port 3000
+2025-10-20 14:37:34 info: Connected to MongoDB successfully
+2025-10-20 14:37:34 info: Roles and permissions seeded successfully
+2025-10-20 14:37:34 info: Server running on port 3000
+2025-10-20 14:37:40 info: Connected to MongoDB successfully
+2025-10-20 14:37:40 info: Roles and permissions seeded successfully
+2025-10-20 14:37:40 info: Server running on port 3000
+2025-10-20 14:37:43 info: Connected to MongoDB successfully
+2025-10-20 14:37:44 info: Roles and permissions seeded successfully
+2025-10-20 14:37:44 info: Server running on port 3000
+2025-10-20 14:37:47 info: Connected to MongoDB successfully
+2025-10-20 14:37:47 info: Roles and permissions seeded successfully
+2025-10-20 14:37:47 info: Server running on port 3000
+2025-10-20 14:37:52 info: Connected to MongoDB successfully
+2025-10-20 14:37:52 info: Roles and permissions seeded successfully
+2025-10-20 14:37:52 info: Server running on port 3000
+2025-10-20 14:37:56 info: Connected to MongoDB successfully
+2025-10-20 14:37:56 info: Roles and permissions seeded successfully
+2025-10-20 14:37:56 info: Server running on port 3000
+2025-10-20 14:37:59 info: Connected to MongoDB successfully
+2025-10-20 14:37:59 info: Roles and permissions seeded successfully
+2025-10-20 14:37:59 info: Server running on port 3000
+2025-10-20 14:38:04 info: Connected to MongoDB successfully
+2025-10-20 14:38:04 info: Roles and permissions seeded successfully
+2025-10-20 14:38:04 info: Server running on port 3000
+2025-10-20 14:38:07 info: Connected to MongoDB successfully
+2025-10-20 14:38:07 info: Roles and permissions seeded successfully
+2025-10-20 14:38:07 info: Server running on port 3000
+2025-10-20 14:38:11 info: Connected to MongoDB successfully
+2025-10-20 14:38:11 info: Roles and permissions seeded successfully
+2025-10-20 14:38:11 info: Server running on port 3000
+2025-10-20 14:38:13 info: Connected to MongoDB successfully
+2025-10-20 14:38:13 info: Roles and permissions seeded successfully
+2025-10-20 14:38:13 info: Server running on port 3000
+2025-10-20 14:38:17 info: Connected to MongoDB successfully
+2025-10-20 14:38:17 info: Roles and permissions seeded successfully
+2025-10-20 14:38:17 info: Server running on port 3000
+2025-10-20 14:38:21 info: Connected to MongoDB successfully
+2025-10-20 14:38:21 info: Roles and permissions seeded successfully
+2025-10-20 14:38:21 info: Server running on port 3000
+2025-10-20 14:38:28 info: Connected to MongoDB successfully
+2025-10-20 14:38:28 info: Roles and permissions seeded successfully
+2025-10-20 14:38:28 info: Server running on port 3000
+2025-10-20 14:38:32 info: Connected to MongoDB successfully
+2025-10-20 14:38:32 info: Roles and permissions seeded successfully
+2025-10-20 14:38:32 info: Server running on port 3000
+2025-10-20 14:38:38 info: Connected to MongoDB successfully
+2025-10-20 14:38:38 info: Roles and permissions seeded successfully
+2025-10-20 14:38:38 info: Server running on port 3000
+2025-10-20 14:38:44 info: Connected to MongoDB successfully
+2025-10-20 14:38:44 info: Roles and permissions seeded successfully
+2025-10-20 14:38:44 info: Server running on port 3000
+2025-10-20 14:38:49 info: Connected to MongoDB successfully
+2025-10-20 14:38:49 info: Roles and permissions seeded successfully
+2025-10-20 14:38:49 info: Server running on port 3000
+2025-10-20 14:38:53 info: Connected to MongoDB successfully
+2025-10-20 14:38:53 info: Roles and permissions seeded successfully
+2025-10-20 14:38:53 info: Server running on port 3000
+2025-10-20 14:38:57 info: Connected to MongoDB successfully
+2025-10-20 14:38:57 info: Roles and permissions seeded successfully
+2025-10-20 14:38:57 info: Server running on port 3000
+2025-10-20 14:39:03 info: Connected to MongoDB successfully
+2025-10-20 14:39:03 info: Roles and permissions seeded successfully
+2025-10-20 14:39:03 info: Server running on port 3000
+2025-10-20 14:39:07 info: Connected to MongoDB successfully
+2025-10-20 14:39:07 info: Roles and permissions seeded successfully
+2025-10-20 14:39:07 info: Server running on port 3000
+2025-10-20 14:39:11 info: Connected to MongoDB successfully
+2025-10-20 14:39:11 info: Roles and permissions seeded successfully
+2025-10-20 14:39:11 info: Server running on port 3000
+2025-10-20 14:39:15 info: Connected to MongoDB successfully
+2025-10-20 14:39:15 info: Roles and permissions seeded successfully
+2025-10-20 14:39:15 info: Server running on port 3000
+2025-10-20 14:39:18 info: Connected to MongoDB successfully
+2025-10-20 14:39:18 info: Roles and permissions seeded successfully
+2025-10-20 14:39:18 info: Server running on port 3000
+2025-10-20 14:39:22 info: Connected to MongoDB successfully
+2025-10-20 14:39:22 info: Roles and permissions seeded successfully
+2025-10-20 14:39:22 info: Server running on port 3000
+2025-10-20 14:39:25 info: Connected to MongoDB successfully
+2025-10-20 14:39:25 info: Roles and permissions seeded successfully
+2025-10-20 14:39:25 info: Server running on port 3000
+2025-10-20 14:39:30 info: Connected to MongoDB successfully
+2025-10-20 14:39:30 info: Roles and permissions seeded successfully
+2025-10-20 14:39:30 info: Server running on port 3000
+2025-10-20 14:39:36 info: Connected to MongoDB successfully
+2025-10-20 14:39:37 info: Roles and permissions seeded successfully
+2025-10-20 14:39:37 info: Server running on port 3000
+2025-10-20 14:39:41 info: Connected to MongoDB successfully
+2025-10-20 14:39:42 info: Roles and permissions seeded successfully
+2025-10-20 14:39:42 info: Server running on port 3000
+2025-10-20 14:44:07 info: Connected to MongoDB successfully
+2025-10-20 14:44:07 info: Roles and permissions seeded successfully
+2025-10-20 14:44:07 info: Server running on port 3000
+2025-10-20 14:44:17 info: Connected to MongoDB successfully
+2025-10-20 14:44:17 info: Roles and permissions seeded successfully
+2025-10-20 14:44:17 info: Server running on port 3000
+2025-10-20 14:44:57 info: Connected to MongoDB successfully
+2025-10-20 14:44:57 info: Roles and permissions seeded successfully
+2025-10-20 14:44:57 info: Server running on port 3000
+2025-10-20 14:45:03 info: Connected to MongoDB successfully
+2025-10-20 14:45:03 info: Roles and permissions seeded successfully
+2025-10-20 14:45:03 info: Server running on port 3000
+2025-10-20 15:12:32 error: Authentication error: jwt expired
+2025-10-20 15:12:43 error: Authentication error: jwt expired
+2025-10-20 16:00:03 error: Authentication error: jwt expired
+2025-10-20 16:01:49 info: Connected to MongoDB successfully
+2025-10-20 16:01:49 info: Roles and permissions seeded successfully
+2025-10-20 16:01:49 info: Server running on port 3000
+2025-10-20 16:02:50 info: Appointment created: 68f64f1aca89c2ed60c76511 by user 68f64eeaca89c2ed60c764f8
+2025-10-21 09:30:10 info: Connected to MongoDB successfully
+2025-10-21 09:30:10 info: Roles and permissions seeded successfully
+2025-10-21 09:30:10 info: Server running on port 3000
+2025-10-21 09:57:21 info: Connected to MongoDB successfully
+2025-10-21 09:57:21 info: Roles and permissions seeded successfully
+2025-10-21 09:57:21 info: Server running on port 3000
+2025-10-21 09:57:23 info: Connected to MongoDB successfully
+2025-10-21 09:57:23 info: Roles and permissions seeded successfully
+2025-10-21 09:57:23 info: Server running on port 3000
+2025-10-21 09:57:29 info: Connected to MongoDB successfully
+2025-10-21 09:57:29 info: Roles and permissions seeded successfully
+2025-10-21 09:57:29 info: Server running on port 3000
+2025-10-21 09:58:37 info: Connected to MongoDB successfully
+2025-10-21 09:58:37 info: Roles and permissions seeded successfully
+2025-10-21 09:58:37 info: Server running on port 3000
+2025-10-21 09:58:41 info: Connected to MongoDB successfully
+2025-10-21 09:58:41 info: Roles and permissions seeded successfully
+2025-10-21 09:58:41 info: Server running on port 3000
+2025-10-21 09:58:43 info: Connected to MongoDB successfully
+2025-10-21 09:58:45 info: Connected to MongoDB successfully
+2025-10-21 09:58:45 info: Roles and permissions seeded successfully
+2025-10-21 09:58:45 info: Server running on port 3000
+2025-10-21 09:59:25 info: Connected to MongoDB successfully
+2025-10-21 09:59:26 info: Roles and permissions seeded successfully
+2025-10-21 09:59:26 info: Server running on port 3000
+2025-10-21 09:59:28 info: Connected to MongoDB successfully
+2025-10-21 09:59:28 info: Roles and permissions seeded successfully
+2025-10-21 09:59:28 info: Server running on port 3000
+2025-10-21 09:59:30 info: Connected to MongoDB successfully
+2025-10-21 09:59:30 info: Roles and permissions seeded successfully
+2025-10-21 09:59:30 info: Server running on port 3000
+2025-10-21 09:59:41 info: Connected to MongoDB successfully
+2025-10-21 09:59:41 info: Roles and permissions seeded successfully
+2025-10-21 09:59:41 info: Server running on port 3000
+2025-10-21 10:03:14 info: Connected to MongoDB successfully
+2025-10-21 10:03:14 info: Roles and permissions seeded successfully
+2025-10-21 10:03:14 info: Server running on port 3000
+2025-10-21 10:03:23 error: Authentication error: jwt expired
+2025-10-21 10:03:32 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 10:03:38 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:03:48 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:12 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:14 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:15 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:16 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:23 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 10:04:28 error: Authentication error: jwt expired
+2025-10-21 10:05:10 info: Connected to MongoDB successfully
+2025-10-21 10:05:10 info: Roles and permissions seeded successfully
+2025-10-21 10:05:10 info: Server running on port 3000
+2025-10-21 10:05:47 info: Connected to MongoDB successfully
+2025-10-21 10:05:48 info: Roles and permissions seeded successfully
+2025-10-21 10:05:48 info: Server running on port 3000
+2025-10-21 10:07:50 info: Appointment created: 68f74d66f861f618466978d9 by user 68f74d05f861f618466978c0
+2025-10-21 10:09:17 info: Connected to MongoDB successfully
+2025-10-21 10:09:17 info: Roles and permissions seeded successfully
+2025-10-21 10:09:17 info: Server running on port 3000
+2025-10-21 10:09:23 info: Connected to MongoDB successfully
+2025-10-21 10:09:23 info: Roles and permissions seeded successfully
+2025-10-21 10:09:23 info: Server running on port 3000
+2025-10-21 10:38:54 info: Connected to MongoDB successfully
+2025-10-21 10:38:54 info: Roles and permissions seeded successfully
+2025-10-21 10:38:54 info: Server running on port 3000
+2025-10-21 10:39:23 info: Appointment created: 68f754cb2994f4e334099d9e by user 68f754b42994f4e334099d85
+2025-10-21 10:45:20 info: Connected to MongoDB successfully
+2025-10-21 10:45:21 info: Roles and permissions seeded successfully
+2025-10-21 10:45:21 info: Server running on port 3000
+2025-10-21 10:45:26 info: Connected to MongoDB successfully
+2025-10-21 10:45:27 info: Roles and permissions seeded successfully
+2025-10-21 10:45:27 info: Server running on port 3000
+2025-10-21 10:53:07 info: Connected to MongoDB successfully
+2025-10-21 10:53:07 info: Roles and permissions seeded successfully
+2025-10-21 10:53:07 info: Server running on port 3000
+2025-10-21 10:53:14 info: Connected to MongoDB successfully
+2025-10-21 10:53:14 info: Roles and permissions seeded successfully
+2025-10-21 10:53:14 info: Server running on port 3000
+2025-10-21 11:02:12 error: Authentication error: jwt expired
+2025-10-21 11:02:45 error: Authentication error: jwt expired
+2025-10-21 11:02:52 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:53 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:54 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:54 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:55 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:02:55 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:22 info: Connected to MongoDB successfully
+2025-10-21 11:03:23 info: Roles and permissions seeded successfully
+2025-10-21 11:03:23 info: Server running on port 3000
+2025-10-21 11:03:29 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:31 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:34 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:37 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 11:03:57 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 11:04:26 info: Connected to MongoDB successfully
+2025-10-21 11:04:26 info: Roles and permissions seeded successfully
+2025-10-21 11:04:26 info: Server running on port 3000
+2025-10-21 11:06:17 info: Appointment created: 68f75b195fc7724e71d34c5b by user 68f75ab95fc7724e71d34c23
+2025-10-21 11:27:02 info: Connected to MongoDB successfully
+2025-10-21 11:27:02 info: Roles and permissions seeded successfully
+2025-10-21 11:27:02 info: Server running on port 3000
+2025-10-21 11:27:06 info: Connected to MongoDB successfully
+2025-10-21 11:27:06 info: Roles and permissions seeded successfully
+2025-10-21 11:27:06 info: Server running on port 3000
+2025-10-21 15:57:31 info: Connected to MongoDB successfully
+2025-10-21 15:57:32 info: Roles and permissions seeded successfully
+2025-10-21 15:57:32 info: Server running on port 3000
+2025-10-21 15:57:38 info: Connected to MongoDB successfully
+2025-10-21 15:57:38 info: Roles and permissions seeded successfully
+2025-10-21 15:57:38 info: Server running on port 3000
+2025-10-21 15:58:36 info: Connected to MongoDB successfully
+2025-10-21 15:58:36 info: Roles and permissions seeded successfully
+2025-10-21 15:58:36 info: Server running on port 3000
+2025-10-21 15:58:42 info: Connected to MongoDB successfully
+2025-10-21 15:58:42 info: Roles and permissions seeded successfully
+2025-10-21 15:58:42 info: Server running on port 3000
+2025-10-21 15:59:16 info: Connected to MongoDB successfully
+2025-10-21 15:59:16 info: Roles and permissions seeded successfully
+2025-10-21 15:59:16 info: Server running on port 3000
+2025-10-21 15:59:18 info: Connected to MongoDB successfully
+2025-10-21 15:59:18 info: Roles and permissions seeded successfully
+2025-10-21 15:59:18 info: Server running on port 3000
+2025-10-21 16:15:01 info: Connected to MongoDB successfully
+2025-10-21 16:15:01 info: Roles and permissions seeded successfully
+2025-10-21 16:15:01 info: Server running on port 3000
+2025-10-21 16:15:03 info: Connected to MongoDB successfully
+2025-10-21 16:15:04 info: Roles and permissions seeded successfully
+2025-10-21 16:15:04 info: Server running on port 3000
+2025-10-21 16:26:22 error: Authentication error: jwt expired
+2025-10-21 16:26:28 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:29 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:30 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:30 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:31 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:31 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:32 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:32 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:33 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:33 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:34 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:34 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:35 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:35 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:36 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:36 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:36 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:37 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:40 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:42 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:47 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:48 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:48 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:49 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:50 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:50 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:52 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:52 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:26:58 error: Authentication error: jwt expired
+2025-10-21 16:26:59 error: Authentication error: jwt expired
+2025-10-21 16:27:03 error: Authentication error: jwt expired
+2025-10-21 16:27:04 error: Authentication error: jwt expired
+2025-10-21 16:27:09 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:09 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:10 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:10 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:11 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:11 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:18 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:19 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:20 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:21 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:21 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:22 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:23 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:26 error: Authentication error: jwt expired
+2025-10-21 16:27:26 error: Authentication error: jwt expired
+2025-10-21 16:27:27 error: Authentication error: jwt expired
+2025-10-21 16:27:35 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:36 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:40 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:45 error: Authentication error: jwt expired
+2025-10-21 16:27:49 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:27:58 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:30:15 info: Connected to MongoDB successfully
+2025-10-21 16:30:16 info: Roles and permissions seeded successfully
+2025-10-21 16:30:16 info: Server running on port 3000
+2025-10-21 16:30:32 info: Connected to MongoDB successfully
+2025-10-21 16:30:32 info: Roles and permissions seeded successfully
+2025-10-21 16:30:32 info: Server running on port 3000
+2025-10-21 16:30:50 info: Connected to MongoDB successfully
+2025-10-21 16:30:50 info: Roles and permissions seeded successfully
+2025-10-21 16:30:50 info: Server running on port 3000
+2025-10-21 16:31:06 info: Connected to MongoDB successfully
+2025-10-21 16:31:06 info: Roles and permissions seeded successfully
+2025-10-21 16:31:06 info: Server running on port 3000
+2025-10-21 16:31:23 info: Connected to MongoDB successfully
+2025-10-21 16:31:23 info: Roles and permissions seeded successfully
+2025-10-21 16:31:23 info: Server running on port 3000
+2025-10-21 16:31:31 info: Connected to MongoDB successfully
+2025-10-21 16:31:31 info: Roles and permissions seeded successfully
+2025-10-21 16:31:31 info: Server running on port 3000
+2025-10-21 16:31:40 info: Connected to MongoDB successfully
+2025-10-21 16:31:40 info: Roles and permissions seeded successfully
+2025-10-21 16:31:40 info: Server running on port 3000
+2025-10-21 16:31:52 info: Connected to MongoDB successfully
+2025-10-21 16:31:52 info: Roles and permissions seeded successfully
+2025-10-21 16:31:52 info: Server running on port 3000
+2025-10-21 16:32:26 info: Connected to MongoDB successfully
+2025-10-21 16:32:26 info: Roles and permissions seeded successfully
+2025-10-21 16:32:26 info: Server running on port 3000
+2025-10-21 16:33:08 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:33:48 info: Connected to MongoDB successfully
+2025-10-21 16:33:48 info: Roles and permissions seeded successfully
+2025-10-21 16:33:48 info: Server running on port 3000
+2025-10-21 16:33:56 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:03 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:04 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:05 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:12 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:34:14 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:35:17 info: Connected to MongoDB successfully
+2025-10-21 16:35:17 info: Roles and permissions seeded successfully
+2025-10-21 16:35:17 info: Server running on port 3000
+2025-10-21 16:36:57 info: Connected to MongoDB successfully
+2025-10-21 16:36:57 info: Roles and permissions seeded successfully
+2025-10-21 16:36:57 info: Server running on port 3000
+2025-10-21 16:37:01 error: Login error: Expected "payload" to be a plain object.
+2025-10-21 16:37:03 error: Login error: Expected "payload" to be a plain object.
+2025-10-21 16:37:07 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:37:08 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:37:09 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:37:10 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-21 16:37:20 info: Connected to MongoDB successfully
+2025-10-21 16:37:20 info: Roles and permissions seeded successfully
+2025-10-21 16:37:20 info: Server running on port 3000
+2025-10-21 16:37:22 info: Connected to MongoDB successfully
+2025-10-21 16:37:22 info: Roles and permissions seeded successfully
+2025-10-21 16:37:22 info: Server running on port 3000
+2025-10-21 16:37:23 info: Connected to MongoDB successfully
+2025-10-21 16:37:23 info: Roles and permissions seeded successfully
+2025-10-21 16:37:23 info: Server running on port 3000
+2025-10-21 16:37:25 info: Connected to MongoDB successfully
+2025-10-21 16:37:25 info: Roles and permissions seeded successfully
+2025-10-21 16:37:25 info: Server running on port 3000
+2025-10-21 16:37:27 info: Connected to MongoDB successfully
+2025-10-21 16:37:28 info: Roles and permissions seeded successfully
+2025-10-21 16:37:28 info: Server running on port 3000
+2025-10-21 16:37:30 info: Connected to MongoDB successfully
+2025-10-21 16:37:30 info: Roles and permissions seeded successfully
+2025-10-21 16:37:30 info: Server running on port 3000
+2025-10-21 16:38:09 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:38:26 info: Connected to MongoDB successfully
+2025-10-21 16:38:26 info: Roles and permissions seeded successfully
+2025-10-21 16:38:26 info: Server running on port 3000
+2025-10-21 16:38:39 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:38:40 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-21 16:39:25 info: Connected to MongoDB successfully
+2025-10-21 16:39:25 info: Roles and permissions seeded successfully
+2025-10-21 16:39:25 info: Server running on port 3000
+2025-10-22 10:37:13 info: Connected to MongoDB successfully
+2025-10-22 10:37:13 info: Roles and permissions seeded successfully
+2025-10-22 10:37:13 info: Server running on port 3000
+2025-10-22 10:37:57 info: Appointment created: 68f8a5f5fd7f98d6948be122 by user 68f8a5cefd7f98d6948be106
+2025-10-22 11:24:49 info: Connected to MongoDB successfully
+2025-10-22 11:24:49 info: Roles and permissions seeded successfully
+2025-10-22 11:24:49 info: Server running on port 3000
+2025-10-22 11:24:52 info: Connected to MongoDB successfully
+2025-10-22 11:24:52 info: Roles and permissions seeded successfully
+2025-10-22 11:24:52 info: Server running on port 3000
+2025-10-22 16:02:43 info: Connected to MongoDB successfully
+2025-10-22 16:02:43 info: Roles and permissions seeded successfully
+2025-10-22 16:02:43 info: Server running on port 3000
+2025-10-22 23:30:12 info: Connected to MongoDB successfully
+2025-10-22 23:30:12 info: Roles and permissions seeded successfully
+2025-10-22 23:30:12 info: Server running on port 3000
+2025-10-22 23:31:20 info: Appointment created: 68f95b3836c8a7077cbf0fdb by user 68f95b1d36c8a7077cbf0fc2
+2025-10-23 08:17:47 info: Connected to MongoDB successfully
+2025-10-23 08:17:47 info: Roles and permissions seeded successfully
+2025-10-23 08:17:47 info: Server running on port 3000
+2025-10-23 08:18:13 info: Appointment created: 68f9d6b545c9dce4e4aedb4e by user 68f9d69e45c9dce4e4aedb35
+2025-10-23 08:25:44 info: Connected to MongoDB successfully
+2025-10-23 08:25:44 info: Roles and permissions seeded successfully
+2025-10-23 08:25:44 info: Server running on port 3000
+2025-10-23 08:26:56 info: Connected to MongoDB successfully
+2025-10-23 08:26:56 info: Roles and permissions seeded successfully
+2025-10-23 08:26:56 info: Server running on port 3000
+2025-10-23 08:27:34 info: Appointment created: 68f9d8e6c707cb29fe3a1b09 by user 68f9d8c8c707cb29fe3a1af0
+2025-10-23 08:28:09 info: Appointment 68f9d8e6c707cb29fe3a1b09 updated by user 68f9d8c8c707cb29fe3a1af0
+2025-10-23 08:28:10 info: Appointment 68f9d8e6c707cb29fe3a1b09 updated by user 68f9d8c8c707cb29fe3a1af0
+2025-10-23 08:44:44 error: Authentication error: jwt expired
+2025-10-23 08:44:45 error: Authentication error: jwt expired
+2025-10-23 08:45:02 info: Appointment 68f9d8e6c707cb29fe3a1b09 updated by user 68f9d8c8c707cb29fe3a1af0
+2025-10-23 08:45:34 info: Connected to MongoDB successfully
+2025-10-23 08:45:34 info: Roles and permissions seeded successfully
+2025-10-23 08:45:34 info: Server running on port 3000
+2025-10-23 08:46:23 info: Connected to MongoDB successfully
+2025-10-23 08:46:23 info: Roles and permissions seeded successfully
+2025-10-23 08:46:23 info: Server running on port 3000
+2025-10-23 08:47:08 info: Appointment created: 68f9dd7cd80119a4792e0dec by user 68f9dd55d80119a4792e0dd3
+2025-10-23 08:47:25 info: Appointment 68f9dd7cd80119a4792e0dec updated by user 68f9dd55d80119a4792e0dd3
+2025-10-23 09:59:04 error: Authentication error: jwt expired
+2025-10-23 10:00:03 info: Connected to MongoDB successfully
+2025-10-23 10:00:03 info: Roles and permissions seeded successfully
+2025-10-23 10:00:03 info: Server running on port 3000
+2025-10-23 10:00:17 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:18 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:25 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:34 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:35 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:00:45 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 10:01:07 info: Connected to MongoDB successfully
+2025-10-23 10:01:07 info: Roles and permissions seeded successfully
+2025-10-23 10:01:07 info: Server running on port 3000
+2025-10-23 10:01:32 info: Appointment created: 68f9eeece4f76b2e1abdeb97 by user 68f9eedde4f76b2e1abdeb7e
+2025-10-23 10:01:47 info: Appointment 68f9eeece4f76b2e1abdeb97 updated by user 68f9eedde4f76b2e1abdeb7e
+2025-10-23 10:02:17 info: Appointment 68f9eeece4f76b2e1abdeb97 cancelled by user 68f9eedde4f76b2e1abdeb7e
+2025-10-23 11:28:49 info: Connected to MongoDB successfully
+2025-10-23 11:28:49 info: Roles and permissions seeded successfully
+2025-10-23 11:28:49 info: Server running on port 3000
+2025-10-23 11:50:28 info: Connected to MongoDB successfully
+2025-10-23 11:50:28 info: Roles and permissions seeded successfully
+2025-10-23 11:50:28 info: Server running on port 3000
+2025-10-23 12:03:05 info: Connected to MongoDB successfully
+2025-10-23 12:03:05 info: Roles and permissions seeded successfully
+2025-10-23 12:03:05 info: Server running on port 3000
+2025-10-23 12:04:22 info: Connected to MongoDB successfully
+2025-10-23 12:04:22 info: Roles and permissions seeded successfully
+2025-10-23 12:04:22 info: Server running on port 3000
+2025-10-23 14:13:58 info: Connected to MongoDB successfully
+2025-10-23 14:13:58 info: Roles and permissions seeded successfully
+2025-10-23 14:13:58 info: Server running on port 3000
+2025-10-23 14:20:33 info: Connected to MongoDB successfully
+2025-10-23 14:20:33 info: Roles and permissions seeded successfully
+2025-10-23 14:20:33 info: Server running on port 3000
+2025-10-23 14:20:53 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 14:20:56 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-23 14:21:12 error: Refresh token error: Cannot read properties of null (reading '_id')
+2025-10-23 14:22:37 info: Connected to MongoDB successfully
+2025-10-23 14:22:37 info: Roles and permissions seeded successfully
+2025-10-23 14:22:37 info: Server running on port 3000
+2025-10-23 14:47:10 info: Connected to MongoDB successfully
+2025-10-23 14:47:10 info: Roles and permissions seeded successfully
+2025-10-23 14:47:10 info: Server running on port 3000
+2025-10-23 14:52:40 info: Connected to MongoDB successfully
+2025-10-23 14:52:41 info: Roles and permissions seeded successfully
+2025-10-23 14:52:41 info: Server running on port 3000
+2025-10-23 15:13:45 info: Connected to MongoDB successfully
+2025-10-23 15:13:45 info: Roles and permissions seeded successfully
+2025-10-23 15:13:45 info: Server running on port 3000
+2025-10-23 15:16:33 info: Connected to MongoDB successfully
+2025-10-23 15:16:33 info: Roles and permissions seeded successfully
+2025-10-23 15:16:33 info: Server running on port 3000
+2025-10-23 15:38:07 info: Connected to MongoDB successfully
+2025-10-23 15:38:07 info: Roles and permissions seeded successfully
+2025-10-23 15:38:07 info: Server running on port 3000
+2025-10-24 10:44:03 info: Connected to MongoDB successfully
+2025-10-24 10:44:03 info: Roles and permissions seeded successfully
+2025-10-24 10:44:03 info: Server running on port 3000
+2025-10-24 11:07:18 error: Authentication error: jwt expired
+2025-10-24 11:26:13 info: Connected to MongoDB successfully
+2025-10-24 11:26:13 info: Roles and permissions seeded successfully
+2025-10-24 11:26:13 info: Server running on port 3000
+2025-10-24 11:27:40 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:27:44 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:27:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:28:03 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:28:05 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:28:55 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:28:59 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:29:12 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:29:19 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:35:21 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:35:43 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:35:47 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:35:51 error: Login error: Cannot read properties of null (reading '_id')
+2025-10-24 11:53:20 info: Connected to MongoDB successfully
+2025-10-24 11:53:21 info: Roles and permissions seeded successfully
+2025-10-24 11:53:21 info: Server running on port 3000
+2025-10-24 15:03:44 error: Authentication error: jwt expired
+2025-10-24 15:03:45 error: Authentication error: jwt expired
+2025-10-24 15:03:46 error: Authentication error: jwt expired
+2025-10-24 15:08:13 info: Connected to MongoDB successfully
+2025-10-24 15:08:13 info: Roles and permissions seeded successfully
+2025-10-24 15:08:13 info: Server running on port 3000
+2025-10-24 15:12:09 info: Patient profile created: 68fb8939d7b17c676bb75202
+2025-10-24 15:13:08 info: Patient 68fb8939d7b17c676bb75202 updated by user 68fb885fd7b17c676bb751cb
+2025-10-24 15:14:15 info: Appointment created: 68fb89b7d7b17c676bb75243 by user 68fb885fd7b17c676bb751cb
+2025-10-24 15:15:18 info: Patient 68fb8939d7b17c676bb75202 updated by user 68fb8853d7b17c676bb751c1

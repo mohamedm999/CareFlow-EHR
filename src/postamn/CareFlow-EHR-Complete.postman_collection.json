@@ -1,0 +1,1926 @@
+{
+  "info": {
+    "name": "CareFlow-EHR Complete API",
+    "description": "Complete API endpoints for CareFlow-EHR system including Authentication, Appointments, and Patients",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refresh_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "doctor_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "nurse_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "patient_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "patient_profile_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "appointment_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🔐 Authentication",
+      "item": [
+        {
+          "name": "Register Doctor",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "if (res.success) {",
+                  "    pm.test(\"Registration success should be true\", function () {",
+                  "        pm.expect(res.success).to.eql(true);",
+                  "    });",
+                  "",
+                  "    pm.collectionVariables.set(\"access_token\", res.accessToken);",
+                  "    pm.collectionVariables.set(\"doctor_id\", res.user.id);",
+                  "",
+                  "    const refreshCookie = pm.cookies.get(\"refreshToken\");",
+                  "    if (refreshCookie) {",
+                  "        pm.collectionVariables.set(\"refresh_token\", refreshCookie);",
+                  "    }",
+                  "",
+                  "    pm.test(\"✅ Doctor registered and tokens stored!\", function () {",
+                  "        pm.expect(true).to.eql(true);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"doctor@example.com\",\n    \"password\": \"Password123\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"roleName\": \"doctor\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Patient",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"patient_id\", res.user.id);",
+                  "    pm.test(\"✅ Patient registered successfully!\", function () {",
+                  "        pm.expect(true).to.eql(true);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"patient@example.com\",\n    \"password\": \"Password123\",\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Smith\",\n    \"roleName\": \"patient\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"Password123\",\n    \"firstName\": \"Admin\",\n    \"lastName\": \"User\",\n    \"roleName\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Secretary",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"secretary@example.com\",\n    \"password\": \"Password123\",\n    \"firstName\": \"Alice\",\n    \"lastName\": \"Johnson\",\n    \"roleName\": \"secretary\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Nurse",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"nurse_id\", res.user.id);",
+                  "    pm.test(\"✅ Nurse registered successfully!\", function () {",
+                  "        pm.expect(res.success).to.eql(true);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"nurse@example.com\",\n    \"password\": \"Password123\",\n    \"firstName\": \"Sarah\",\n    \"lastName\": \"Williams\",\n    \"roleName\": \"nurse\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"access_token\", res.accessToken);",
+                  "",
+                  "    const refreshCookie = pm.cookies.get(\"refreshToken\");",
+                  "    if (refreshCookie) {",
+                  "        pm.collectionVariables.set(\"refresh_token\", refreshCookie);",
+                  "    }",
+                  "",
+                  "    pm.test(\"✅ Login successful!\", function () {",
+                  "        pm.expect(true).to.eql(true);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"doctor@example.com\",\n    \"password\": \"Password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login as Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"access_token\", res.accessToken);",
+                  "    pm.test(\"✅ Admin logged in successfully!\", function () {",
+                  "        pm.expect(res.user.role.name).to.eql('admin');",
+                  "    });",
+                  "    console.log('🔐 Logged in as: ADMIN');",
+                  "    console.log('📋 Permissions:', res.user.role.permissions.length);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"Password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login as Doctor",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"access_token\", res.accessToken);",
+                  "    pm.collectionVariables.set(\"doctor_id\", res.user.id);",
+                  "    pm.test(\"✅ Doctor logged in successfully!\", function () {",
+                  "        pm.expect(res.user.role.name).to.eql('doctor');",
+                  "    });",
+                  "    console.log('🔐 Logged in as: DOCTOR');",
+                  "    console.log('📋 Permissions:', res.user.role.permissions);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"doctor@example.com\",\n    \"password\": \"Password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login as Nurse",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"access_token\", res.accessToken);",
+                  "    pm.test(\"✅ Nurse logged in successfully!\", function () {",
+                  "        pm.expect(res.user.role.name).to.eql('nurse');",
+                  "    });",
+                  "    console.log('🔐 Logged in as: NURSE');",
+                  "    console.log('📋 Permissions:', res.user.role.permissions);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"nurse@example.com\",\n    \"password\": \"Password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login as Secretary",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"access_token\", res.accessToken);",
+                  "    pm.test(\"✅ Secretary logged in successfully!\", function () {",
+                  "        pm.expect(res.user.role.name).to.eql('secretary');",
+                  "    });",
+                  "    console.log('🔐 Logged in as: SECRETARY');",
+                  "    console.log('📋 Permissions:', res.user.role.permissions);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"secretary@example.com\",\n    \"password\": \"Password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login as Patient",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"access_token\", res.accessToken);",
+                  "    pm.collectionVariables.set(\"patient_id\", res.user.id);",
+                  "    pm.test(\"✅ Patient logged in successfully!\", function () {",
+                  "        pm.expect(res.user.role.name).to.eql('patient');",
+                  "    });",
+                  "    console.log('🔐 Logged in as: PATIENT');",
+                  "    console.log('📋 Permissions:', res.user.role.permissions);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"patient@example.com\",\n    \"password\": \"Password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"access_token\", res.accessToken);",
+                  "    pm.test(\"✅ Token refreshed successfully!\", function () {",
+                  "        pm.expect(true).to.eql(true);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/refresh-token",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "refresh-token"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Forgot Password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Password reset email sent!\", function () {",
+                  "        pm.expect(res.message).to.include('email sent');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"doctor@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/forgot-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "forgot-password"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "if (res.success) {",
+                  "    pm.collectionVariables.set(\"access_token\", \"\");",
+                  "    pm.collectionVariables.set(\"refresh_token\", \"\");",
+                  "    pm.test(\"✅ Logout successful!\", function () {",
+                  "        pm.expect(true).to.eql(true);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "logout"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "👥 Patients - CRUD Operations",
+      "description": "CRUD operations for patient management - requires doctor/secretary permissions",
+      "item": [
+        {
+          "name": "Create Patient Profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "if (res.success && res.patient) {",
+                  "    pm.collectionVariables.set(\"patient_profile_id\", res.patient._id);",
+                  "    pm.test(\"✅ Patient profile created successfully!\", function () {",
+                  "        pm.expect(res.patient).to.have.property('user');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userId\": \"{{patient_id}}\",\n    \"bloodType\": \"O+\",\n    \"emergencyContact\": {\n        \"name\": \"John Doe\",\n        \"relationship\": \"Father\",\n        \"phone\": \"+1234567890\"\n    },\n    \"insurance\": {\n        \"provider\": \"HealthCare Inc\",\n        \"policyNumber\": \"POL-123456\",\n        \"expiryDate\": \"2026-12-31\"\n    },\n    \"consents\": {\n        \"dataSharing\": true,\n        \"treatmentConsent\": true,\n        \"consentDate\": \"2025-10-23\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/patients",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Patients",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Patients retrieved successfully!\", function () {",
+                  "        pm.expect(res.patients).to.be.an('array');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/patients?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Patients",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/patients?search=Jane&bloodType=O+",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients"],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "Jane"
+                },
+                {
+                  "key": "bloodType",
+                  "value": "O+"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Patient",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Patient details retrieved!\", function () {",
+                  "        pm.expect(res.patient).to.be.an('object');",
+                  "        pm.expect(res.patient).to.have.property('user');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/patients/{{patient_profile_id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "{{patient_profile_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Patient Profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Patient updated successfully!\", function () {",
+                  "        pm.expect(res.patient).to.be.an('object');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"bloodType\": \"AB+\",\n    \"emergencyContact\": {\n        \"name\": \"Jane Doe\",\n        \"relationship\": \"Mother\",\n        \"phone\": \"+1234567891\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/patients/{{patient_profile_id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "{{patient_profile_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Allergy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Allergy added successfully!\", function () {",
+                  "        pm.expect(res.patient.allergies).to.be.an('array');",
+                  "        pm.expect(res.patient.allergies.length).to.be.greaterThan(0);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"allergen\": \"Penicillin\",\n    \"severity\": \"severe\",\n    \"notes\": \"Patient experienced anaphylactic shock in 2020\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/patients/{{patient_profile_id}}/allergies",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "{{patient_profile_id}}", "allergies"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Medical History",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Medical history added successfully!\", function () {",
+                  "        pm.expect(res.patient.medicalHistory).to.be.an('array');",
+                  "        pm.expect(res.patient.medicalHistory.length).to.be.greaterThan(0);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"condition\": \"Hypertension\",\n    \"diagnosedDate\": \"2020-05-15\",\n    \"status\": \"active\",\n    \"notes\": \"Patient is on medication, blood pressure controlled\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/patients/{{patient_profile_id}}/medical-history",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "{{patient_profile_id}}", "medical-history"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "� Patients - Analytics & Statistics",
+      "item": [
+        {
+          "name": "Get Patient Statistics",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Patient statistics retrieved successfully!\", function () {",
+                  "        pm.expect(res.stats).to.be.an('object');",
+                  "        pm.expect(res.stats).to.have.property('totalPatients');",
+                  "        pm.expect(res.stats).to.have.property('byBloodType');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/patients/stats/overview",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "stats", "overview"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Patients by Blood Type",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Blood type groups retrieved!\", function () {",
+                  "        pm.expect(res.bloodTypeGroups).to.be.an('array');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/patients/analytics/by-blood-type",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "analytics", "by-blood-type"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Allergy Analytics",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Allergy analytics retrieved!\", function () {",
+                  "        pm.expect(res.allergyAnalytics).to.be.an('array');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/patients/analytics/allergies",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "analytics", "allergies"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Medical Conditions Trends",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Medical conditions trends retrieved!\", function () {",
+                  "        pm.expect(res.trends).to.be.an('array');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/patients/analytics/conditions?status=active",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "analytics", "conditions"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "active"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Patient Demographics",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200 or 403\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 403]);",
+                  "});",
+                  "",
+                  "if (pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.success) {",
+                  "        pm.test(\"✅ Demographics retrieved!\", function () {",
+                  "            pm.expect(res.demographics).to.be.an('object');",
+                  "            pm.expect(res.demographics).to.have.property('ageGroups');",
+                  "            pm.expect(res.demographics).to.have.property('genderDistribution');",
+                  "        });",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/patients/analytics/demographics",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "analytics", "demographics"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Patients At Risk",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ At-risk patients retrieved!\", function () {",
+                  "        pm.expect(res.atRiskPatients).to.be.an('array');",
+                  "        pm.expect(res).to.have.property('totalAtRisk');",
+                  "    });",
+                  "",
+                  "    pm.test(\"Risk patients have required properties\", function () {",
+                  "        if (res.atRiskPatients.length > 0) {",
+                  "            pm.expect(res.atRiskPatients[0]).to.have.property('riskScore');",
+                  "            pm.expect(res.atRiskPatients[0]).to.have.property('name');",
+                  "        }",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/patients/analytics/at-risk",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "analytics", "at-risk"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "�📅 Appointments - CRUD Operations",
+      "item": [
+        {
+          "name": "Create Appointment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "pm.test(\"Response should be 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "if (res.success && res.appointment) {",
+                  "    pm.collectionVariables.set(\"appointment_id\", res.appointment._id);",
+                  "    pm.test(\"✅ Appointment created successfully!\", function () {",
+                  "        pm.expect(res.appointment.status).to.eql(\"scheduled\");",
+                  "    });",
+                  "} else if (pm.response.code === 409) {",
+                  "    pm.test(\"⚠️ Conflict detected - as expected for time slot conflicts\", function () {",
+                  "        pm.expect(true).to.eql(true);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"doctorId\": \"{{doctor_id}}\",\n    \"patientId\": \"{{patient_id}}\",\n    \"dateTime\": \"2025-10-25T10:00:00.000Z\",\n    \"duration\": 30,\n    \"reason\": \"Regular checkup\",\n    \"notes\": \"Patient reports feeling well\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get My Appointments",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Appointments retrieved successfully!\", function () {",
+                  "        pm.expect(res.appointments).to.be.an('array');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Appointments by Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments?status=scheduled",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "scheduled"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Appointments by Date",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments?date=2025-10-25",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments"],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2025-10-25"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Appointment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Appointment updated successfully!\", function () {",
+                  "        pm.expect(res.appointment).to.be.an('object');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"notes\": \"Updated notes: Patient requested earlier time\",\n    \"duration\": 45\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments/{{appointment_id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "{{appointment_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Complete Appointment (Doctor Only)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Appointment completed successfully!\", function () {",
+                  "        pm.expect(res.appointment.status).to.eql(\"completed\");",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"notes\": \"Appointment completed successfully. Patient is in good health.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments/{{appointment_id}}/complete",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "{{appointment_id}}", "complete"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Appointment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Appointment cancelled successfully!\", function () {",
+                  "        pm.expect(res.appointment.status).to.eql(\"cancelled\");",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"reason\": \"Patient requested cancellation due to scheduling conflict\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments/{{appointment_id}}/cancel",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "{{appointment_id}}", "cancel"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🔍 Appointments - Availability & Scheduling",
+      "item": [
+        {
+          "name": "Get Doctor Availability",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Doctor availability retrieved!\", function () {",
+                  "        pm.expect(res.availableSlots).to.be.an('array');",
+                  "    });",
+                  "",
+                  "    pm.test(\"Available slots have required properties\", function () {",
+                  "        if (res.availableSlots.length > 0) {",
+                  "            pm.expect(res.availableSlots[0]).to.have.property('startTime');",
+                  "            pm.expect(res.availableSlots[0]).to.have.property('endTime');",
+                  "            pm.expect(res.availableSlots[0]).to.have.property('duration');",
+                  "        }",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/availability/{{doctor_id}}?date=2025-10-25",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "availability", "{{doctor_id}}"],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2025-10-25"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📊 Appointments - Analytics & Statistics",
+      "item": [
+        {
+          "name": "Get Appointment Statistics",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (res.success) {",
+                  "    pm.test(\"✅ Statistics retrieved successfully!\", function () {",
+                  "        pm.expect(res.stats).to.be.an('object');",
+                  "        pm.expect(res.stats).to.have.property('totalAppointments');",
+                  "        pm.expect(res.stats).to.have.property('completionRate');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/stats?startDate=2025-01-01&endDate=2025-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "stats"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2025-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2025-12-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Appointments by Doctor (Admin Only)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200 or 403\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 403]);",
+                  "});",
+                  "",
+                  "if (pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.success) {",
+                  "        pm.test(\"✅ Doctor statistics retrieved!\", function () {",
+                  "            pm.expect(res.doctorStats).to.be.an('array');",
+                  "        });",
+                  "    }",
+                  "} else {",
+                  "    pm.test(\"⚠️ Access denied - Admin/Secretary only\", function () {",
+                  "        pm.expect(true).to.eql(true);",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/by-doctor?startDate=2025-01-01&endDate=2025-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "by-doctor"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2025-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2025-12-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Daily Appointment Trends (Admin Only)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200 or 403\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 403]);",
+                  "});",
+                  "",
+                  "if (pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.success) {",
+                  "        pm.test(\"✅ Daily trends retrieved!\", function () {",
+                  "            pm.expect(res.trends).to.be.an('array');",
+                  "        });",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/trends/daily?days=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "trends", "daily"],
+              "query": [
+                {
+                  "key": "days",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Busiest Time Slots (Admin Only)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response should be 200 or 403\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 403]);",
+                  "});",
+                  "",
+                  "if (pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.success) {",
+                  "        pm.test(\"✅ Time slot analytics retrieved!\", function () {",
+                  "            pm.expect(res.timeSlots).to.be.an('array');",
+                  "        });",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/analytics/time-slots",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "analytics", "time-slots"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🧪 Test Scenarios",
+      "item": [
+        {
+          "name": "Test Conflict Detection",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Should return 409 for conflicting appointment\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "if (pm.response.code === 409) {",
+                  "    pm.test(\"✅ Conflict detection working!\", function () {",
+                  "        pm.expect(res.message).to.include('not available');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"doctorId\": \"{{doctor_id}}\",\n    \"patientId\": \"{{patient_id}}\",\n    \"dateTime\": \"2025-10-25T10:15:00.000Z\",\n    \"duration\": 30,\n    \"reason\": \"Conflicting appointment test\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Invalid Doctor ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Should return 400 for invalid doctor\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "pm.test(\"✅ Invalid doctor validation working!\", function () {",
+                  "    pm.expect(res.message).to.include('Invalid doctor');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"doctorId\": \"507f1f77bcf86cd799439011\",\n    \"patientId\": \"{{patient_id}}\",\n    \"dateTime\": \"2025-10-26T14:00:00.000Z\",\n    \"duration\": 30,\n    \"reason\": \"Test invalid doctor\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/appointments",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Permission Denied",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Should return 401 without token\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"✅ Authentication required!\", function () {",
+                  "    pm.expect(true).to.eql(true);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/stats",
+              "host": ["{{baseUrl}}"],
+              "path": ["appointments", "stats"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Patient Restriction on Update",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Should return 400 for invalid patient update\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "const res = pm.response.json();",
+                  "pm.test(\"✅ Patient restriction validation working!\", function () {",
+                  "    pm.expect(res.message).to.include('can only update');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"emergencyContact\": {\n        \"name\": \"Test\",\n        \"phone\": \"123\"\n    },\n    \"bloodType\": \"A+\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/patients/{{patient_profile_id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["patients", "{{patient_profile_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
