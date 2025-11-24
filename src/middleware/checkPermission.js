@@ -35,19 +35,3 @@ export const checkPermission = (requiredPermission) => {
   };
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

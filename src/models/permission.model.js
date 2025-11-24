@@ -13,7 +13,17 @@ const permissionSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['user_management', 'patient_records', 'appointments', 'system_management']
+    enum: [
+      'user_management',
+      'patient_records',
+      'appointments',
+      'consultations',
+      'prescriptions',
+      'pharmacy',
+      'laboratory',
+      'documents',
+      'system_management'
+    ]
   },
   createdAt: {
     type: Date,

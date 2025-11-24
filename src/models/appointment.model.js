@@ -18,7 +18,7 @@ const appointmentSchema = new mongoose.Schema({
   duration: {
     type: Number,
     required: true,
-    default: 30 
+    default: 30
   },
   reason: {
     type: String,
@@ -42,6 +42,9 @@ const appointmentSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 appointmentSchema.index({ doctor: 1, status: 1, dateTime: 1 });
+appointmentSchema.index({ patient: 1, status: 1 });
+appointmentSchema.index({ dateTime: 1 });
+appointmentSchema.index({ status: 1, dateTime: 1 });
 
 const Appointment = mongoose.model('Appointment', appointmentSchema);
 export default Appointment;

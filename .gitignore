@@ -1,3 +1,229 @@
-/node_modules
+# ==============================================
+# CareFlow-EHR - Git Ignore File
+# ==============================================
+
+# ==============================================
+# Dependencies
+# ==============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ==============================================
+# Environment Variables & Secrets
+# ==============================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+!.env.example
+
+# ==============================================
+# Logs
+# ==============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ==============================================
+# OS Files
+# ==============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ==============================================
+# IDE & Editors
+# ==============================================
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*.swn
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+
+# ==============================================
+# Build & Distribution
+# ==============================================
+dist/
+build/
+out/
+*.min.js
+*.min.css
+
+# ==============================================
+# Testing
+# ==============================================
+coverage/
+.nyc_output/
+*.lcov
+.mocha.json
+junit.xml
+
+# ==============================================
+# Temporary Files
+# ==============================================
+tmp/
+temp/
+*.tmp
+*.temp
+uploads/*
+!uploads/.gitkeep
+
+# ==============================================
+# Backups
+# ==============================================
+backups/
+*.backup
+*.bak
+*.old
+
+# ==============================================
+# Database
+# ==============================================
+*.sqlite
+*.sqlite3
+*.db
+data/
+mongodb/
+
+# ==============================================
+# Docker
+# ==============================================
+docker-compose.override.yml
+.dockerignore
+
+# ==============================================
+# Cloud & Deployment
+# ==============================================
+.vercel
+.netlify
+.firebase/
+.gcloud/
+.aws/
+
+# ==============================================
+# Security & Keys
+# ==============================================
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+secrets/
+.ssh/
+.gnupg/
+
+# ==============================================
+# CI/CD
+# ==============================================
+.github/workflows/secrets/
+.gitlab-ci-local/
+
+# ==============================================
+# Documentation (temporary)
+# ==============================================
+# Uncomment if you don't want to track generated docs
+# docs/generated/
+# api-docs/
+
+# ==============================================
+# Miscellaneous
+# ==============================================
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ==============================================
+# Project Specific
+# ==============================================
+# Local development files
+dev-notes.md
+TODO.md
+SCRATCH.md
+
+# Test files (if you want to ignore them)
+# test/temp/
+# test/fixtures/
+
+# Generated files
+# postman/generated/
+
+# ==============================================
+# END
+# ==============================================
 
 

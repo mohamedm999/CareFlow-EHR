@@ -1,81 +1,109 @@
 import User from '../models/user.model.js';
 import Role from '../models/role.model.js';
 import { logger } from '../config/logger.js';
-import { 
-  generateAccessToken, 
-  generateRefreshToken, 
-  verifyRefreshToken 
-} from '../utils/jwt.utils.js';
-import crypto from 'crypto';
+import { verifyRefreshToken } from '../utils/jwt.utils.js';
+import { sendError } from '../helpers/response.helper.js';
+import { generateTokens, setRefreshTokenCookie, formatUserResponse, hashToken, generateResetToken } from '../helpers/auth.helper.js';
 
+// Patient self-registration (auto-assigns "patient" role)
 export const register = async (req, res) => {
   try {
-    const { email, password, firstName, lastName, roleName } = req.body;
+    const { email, password, firstName, lastName } = req.body;
 
     const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ 
-        success: false,
-        message: 'User already exists' 
-      });
-    }
+    if (existingUser) return sendError(res, 400, 'User already exists');
 
-    const role = await Role.findOne({ name: roleName });
-    if (!role) {
-      return res.status(400).json({ 
-        success: false,
-        message: 'Invalid role' 
-      });
-    }
+    // Auto-assign patient role
+    const patientRole = await Role.findOne({ name: 'patient' });
+    if (!patientRole) return sendError(res, 500, 'Patient role not found in system');
 
-    const user = new User({
-      email,
+    const user = await User.create({ 
+      email, 
       password, 
-      firstName,
-      lastName,
-      role: role._id
+      firstName, 
+      lastName, 
+      role: patientRole._id 
     });
 
-    await user.save();
+    const { accessToken, refreshToken } = generateTokens({ ...user.toObject(), role: patientRole._id });
 
-    const tokenPayload = { 
-      userId: user._id, 
-      roleId: role._id, 
-      email: user.email 
-    };
-    
-    const accessToken = generateAccessToken(tokenPayload);
-    const refreshToken = generateRefreshToken(tokenPayload);
-   
     user.refreshToken = refreshToken;
     await user.save();
 
-    res.cookie('refreshToken', refreshToken, {
-      httpOnly: true,
-      secure: false, // Change to false for development/HTTP
-      sameSite: 'lax', // Change from 'strict' to 'lax'
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-    });
-
+    setRefreshTokenCookie(res, refreshToken);
     res.status(201).json({
       success: true,
-      message: 'User registered successfully',
+      message: 'Patient account created successfully',
       user: {
         id: user._id,
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
-        role: roleName
+        role: {
+          name: patientRole.name,
+          description: patientRole.description
+        },
+        isActive: user.isActive
       },
       accessToken
     });
-
   } catch (error) {
     logger.error('Registration error:', error);
-    res.status(500).json({ 
-      success: false,
-      message: 'Server error' 
+    return sendError(res, 500, 'Server error', error);
+  }
+};
+
+// Admin-only staff registration
+export const registerStaff = async (req, res) => {
+  try {
+    const { email, password, firstName, lastName, roleName } = req.body;
+
+    // Prevent creating patient accounts through this endpoint
+    if (roleName === 'patient') {
+      return sendError(res, 400, 'Use /auth/register for patient accounts');
+    }
+
+    const [existingUser, role] = await Promise.all([
+      User.findOne({ email }),
+      Role.findOne({ name: roleName })
+    ]);
+
+    if (existingUser) return sendError(res, 400, 'User already exists');
+    if (!role) return sendError(res, 400, 'Invalid role');
+
+    const user = await User.create({ 
+      email, 
+      password, 
+      firstName, 
+      lastName, 
+      role: role._id 
     });
+
+    const { accessToken, refreshToken } = generateTokens({ ...user.toObject(), role: role._id });
+
+    user.refreshToken = refreshToken;
+    await user.save();
+
+    setRefreshTokenCookie(res, refreshToken);
+    res.status(201).json({
+      success: true,
+      message: `${roleName.charAt(0).toUpperCase() + roleName.slice(1)} account created successfully`,
+      user: {
+        id: user._id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        role: {
+          name: role.name,
+          description: role.description
+        },
+        isActive: user.isActive
+      },
+      accessToken
+    });
+  } catch (error) {
+    logger.error('Staff registration error:', error);
+    return sendError(res, 500, 'Server error', error);
   }
 };
 
@@ -83,54 +111,25 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Find user and populate role
-    const user = await User.findOne({ email }).populate('role');
-    if (!user) {
-      return res.status(401).json({ 
-        success: false,
-        message: 'Invalid credentials' 
+    const user = await User.findOne({ email })
+      .populate({
+        path: 'role',
+        populate: {
+          path: 'permissions',
+          select: 'name description category'
+        }
       });
-    }
+      
+    if (!user) return sendError(res, 401, 'Invalid credentials');
+    if (!user.isActive) return sendError(res, 401, 'Account is deactivated');
+    if (!await user.comparePassword(password)) return sendError(res, 401, 'Invalid credentials');
 
-    // Check if account is active
-    if (!user.isActive) {
-      return res.status(401).json({ 
-        success: false,
-        message: 'Account is deactivated' 
-      });
-    }
+    const { accessToken, refreshToken } = generateTokens(user);
 
-    // Verify password
-    const isPasswordValid = await user.comparePassword(password);
-    if (!isPasswordValid) {
-      return res.status(401).json({ 
-        success: false,
-        message: 'Invalid credentials' 
-      });
-    }
-
-    // Generate tokens
-    const tokenPayload = { 
-      userId: user._id, 
-      roleId: user.role._id,
-      email: user.email 
-    };
-    
-    const accessToken = generateAccessToken(tokenPayload);
-    const refreshToken = generateRefreshToken(tokenPayload);
-
-    // Save refresh token to database
     user.refreshToken = refreshToken;
     await user.save();
 
-    // Set refresh token as httpOnly cookie
-    res.cookie('refreshToken', refreshToken, {
-      httpOnly: true,
-      secure: false, // Change to false for development/HTTP
-      sameSite: 'lax', // Change from 'strict' to 'lax'
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-    });
-
+    setRefreshTokenCookie(res, refreshToken);
     res.json({
       success: true,
       message: 'Login successful',
@@ -139,232 +138,141 @@ export const login = async (req, res) => {
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
-        role: user.role.name
+        role: {
+          name: user.role.name,
+          description: user.role.description
+        },
+        isActive: user.isActive
       },
+      permissions: user.role.permissions.map(p => ({
+        name: p.name,
+        category: p.category,
+        description: p.description
+      })),
       accessToken
     });
-
   } catch (error) {
     logger.error('Login error:', error);
-    res.status(500).json({ 
-      success: false,
-      message: 'Server error' 
-    });
+    return sendError(res, 500, 'Server error', error);
   }
 };
 
 export const refreshToken = async (req, res) => {
   try {
-    // Get refresh token from cookie
     const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return sendError(res, 401, 'Refresh token required');
 
-    if (!refreshToken) {
-      return res.status(401).json({ 
-        success: false,
-        message: 'Refresh token required' 
-      });
-    }
+    const user = await User.findById(verifyRefreshToken(refreshToken).userId).populate('role');
+    if (!user || user.refreshToken !== refreshToken) return sendError(res, 401, 'Invalid refresh token');
+    if (!user.isActive) return sendError(res, 401, 'Account is deactivated');
 
-    const decoded = verifyRefreshToken(refreshToken);
-    
-    // Find user and check if refresh token matches
-    const user = await User.findById(decoded.userId).populate('role');
-    if (!user || user.refreshToken !== refreshToken) {
-      return res.status(401).json({ 
-        success: false,
-        message: 'Invalid refresh token' 
-      });
-    }
+    const { accessToken: newAccessToken, refreshToken: newRefreshToken } = generateTokens(user);
 
-    // Check if account is still active
-    if (!user.isActive) {
-      return res.status(401).json({ 
-        success: false,
-        message: 'Account is deactivated' 
-      });
-    }
-
-    // Generate new tokens
-    const tokenPayload = { 
-      userId: user._id, 
-      roleId: user.role._id,
-      email: user.email 
-    };
-    
-    const newAccessToken = generateAccessToken(tokenPayload);
-    const newRefreshToken = generateRefreshToken(tokenPayload);
-
-    // Update refresh token in database
     user.refreshToken = newRefreshToken;
     await user.save();
 
-    // Set new refresh token as cookie
-    res.cookie('refreshToken', newRefreshToken, {
-      httpOnly: true,
-      secure: false, // Change to false for development/HTTP
-      sameSite: 'lax', // Change from 'strict' to 'lax'
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-    });
-
-    res.json({
-      success: true,
-      message: 'Token refreshed successfully',
-      accessToken: newAccessToken
-    });
-
+    setRefreshTokenCookie(res, newRefreshToken);
+    res.json({ success: true, message: 'Token refreshed successfully', accessToken: newAccessToken });
   } catch (error) {
     logger.error('Refresh token error:', error);
-    res.status(401).json({ 
-      success: false,
-      message: 'Invalid refresh token' 
-    });
+    return sendError(res, 401, 'Invalid refresh token', error);
   }
 };
 
 export const logout = async (req, res) => {
   try {
-    const { userId } = req.user; 
-
-    await User.findByIdAndUpdate(userId, { refreshToken: null });
-
-    // Clear the refresh token cookie
+    await User.findByIdAndUpdate(req.user.userId, { refreshToken: null });
     res.clearCookie('refreshToken');
-
-    res.json({ 
-      success: true,
-      message: 'Logged out successfully' 
-    });
-
+    res.json({ success: true, message: 'Logged out successfully' });
   } catch (error) {
     logger.error('Logout error:', error);
-    res.status(500).json({ 
-      success: false,
-      message: 'Server error' 
-    });
+    return sendError(res, 500, 'Server error', error);
   }
 };
 
 export const forgotPassword = async (req, res) => {
   try {
-    const { email } = req.body;
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) return res.json({ success: true, message: 'If email exists, reset link will be sent' });
 
-    const user = await User.findOne({ email });
-    if (!user) {
-      // Ne pas révéler si l'email existe
-      return res.json({
-        success: true,
-        message: 'If email exists, reset link will be sent'
-      });
-    }
-
-    // Generate reset token
-    const resetToken = crypto.randomBytes(32).toString('hex');
-    const hashedToken = crypto.createHash('sha256').update(resetToken).digest('hex');
-
-    user.resetPasswordToken = hashedToken;
-    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+    const resetToken = generateResetToken();
+    user.resetPasswordToken = hashToken(resetToken);
+    user.resetPasswordExpires = Date.now() + 3600000;
     await user.save();
 
-    // Send email
-    await sendPasswordResetEmail(user, resetToken);
-
     logger.info(`Password reset requested for user ${user._id}`);
-
-    res.json({
-      success: true,
-      message: 'Password reset email sent'
-    });
+    res.json({ success: true, message: 'Password reset email sent' });
   } catch (error) {
     logger.error('Forgot password error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Server error'
-    });
+    return sendError(res, 500, 'Server error', error);
   }
 };
 
 export const resetPassword = async (req, res) => {
   try {
-    const { token } = req.params;
-    const { password } = req.body;
+    if (!req.params.token) return sendError(res, 400, 'Reset token is required');
+    if (!req.body.password) return sendError(res, 400, 'New password is required');
 
-    const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
-
-    const user = await User.findOne({
-      resetPasswordToken: hashedToken,
-      resetPasswordExpires: { $gt: Date.now() }
+    const user = await User.findOne({ 
+      resetPasswordToken: hashToken(req.params.token), 
+      resetPasswordExpires: { $gt: Date.now() } 
     });
 
-    if (!user) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid or expired reset token'
-      });
-    }
+    if (!user) return sendError(res, 400, 'Invalid or expired reset token');
 
-    // Update password
-    user.password = await bcrypt.hash(password, 10);
+    user.password = req.body.password;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
     await user.save();
 
     logger.info(`Password reset successful for user ${user._id}`);
-
-    res.json({
-      success: true,
-      message: 'Password reset successful'
-    });
+    res.json({ success: true, message: 'Password reset successful' });
   } catch (error) {
     logger.error('Reset password error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Server error'
-    });
+    return sendError(res, 500, 'Server error', error);
   }
 };
 
+// Get current authenticated user with permissions
+export const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId)
+      .populate({
+        path: 'role',
+        populate: {
+          path: 'permissions',
+          select: 'name description category'
+        }
+      })
+      .select('-password -refreshToken');
 
+    if (!user) return sendError(res, 404, 'User not found');
+    if (!user.isActive) return sendError(res, 401, 'Account is deactivated');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    res.json({
+      success: true,
+      message: 'User retrieved successfully',
+      user: {
+        id: user._id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        role: {
+          name: user.role.name,
+          description: user.role.description
+        },
+        isActive: user.isActive,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt
+      },
+      permissions: user.role.permissions.map(p => ({
+        name: p.name,
+        category: p.category,
+        description: p.description
+      }))
+    });
+  } catch (error) {
+    logger.error('Get current user error:', error);
+    return sendError(res, 500, 'Server error', error);
+  }
+};

@@ -80,3 +80,41 @@ export const validateAppointment = [
     next();
   }
 ];
+
+/**
+ * Middleware générique de validation Joi
+ * @param {Object} schema - Schéma Joi à utiliser pour la validation
+ * @param {string} source - Source des données ('body', 'query', 'params')
+ */
+export const validate = (schema, source = 'body') => {
+  return (req, res, next) => {
+    if (!req[source]) {
+      return res.status(400).json({
+        success: false,
+        message: `No ${source} data provided`
+      });
+    }
+
+    const dataToValidate = req[source];
+    const { error, value } = schema.validate(dataToValidate, {
+      abortEarly: false,
+      stripUnknown: true
+    });
+    
+    if (error) {
+      const errors = error.details.map(detail => ({
+        field: detail.path.join('.'),
+        message: detail.message.replace(/"/g, '')
+      }));
+      
+      return res.status(400).json({
+        success: false,
+        message: 'Validation error',
+        errors
+      });
+    }
+    
+    req[source] = value;
+    next();
+  };
+};

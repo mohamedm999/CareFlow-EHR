@@ -5,7 +5,7 @@ const roleSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    enum: ['admin', 'doctor', 'nurse', 'secretary', 'patient'],
+    enum: ['admin', 'doctor', 'nurse', 'secretary', 'patient', 'pharmacist', 'lab_technician'],
     lowercase: true
   },
   description: {
@@ -15,15 +15,7 @@ const roleSchema = new mongoose.Schema({
   permissions: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Permission'
-  }],
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
-  }
+  }]
 }, { timestamps: true });
 
 const Role = mongoose.model('Role', roleSchema);

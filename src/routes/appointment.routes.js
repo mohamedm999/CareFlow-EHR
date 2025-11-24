@@ -17,7 +17,6 @@ import {
 
 const router = express.Router();
 
-
 router.post('/', 
   authenticateToken, 
   checkPermission('schedule_own_appointments'),
