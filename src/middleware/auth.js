@@ -13,7 +13,10 @@ export const authenticateToken = async (req, res, next) => {
     const decoded = verifyAccessToken(token);
 
     const user = await User.findById(decoded.userId)
-      .populate('role')
+      .populate({
+        path: 'role',
+        populate: { path: 'permissions' }
+      })
       .select('-password -refreshToken');
 
     if (!user) return res.status(401).json({ message: 'User not found' });
