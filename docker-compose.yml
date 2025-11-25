@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - PORT=3000
       - MONGODB_URI=mongodb://mongodb:27017/careflow_ehr
       - JWT_SECRET=${JWT_SECRET}
@@ -18,6 +18,9 @@ services:
       - S3_ENDPOINT=http://minio:9000
       - S3_BUCKET_NAME=${S3_BUCKET_NAME}
       - S3_REGION=${S3_REGION}
+    volumes:
+      - .:/app
+      - /app/node_modules
     depends_on:
       - mongodb
       - minio

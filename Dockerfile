@@ -10,6 +10,9 @@ COPY . .
 
 EXPOSE 3000
 
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 
-CMD ["node", "src/app.js"]
+# Install nodemon globally for hot-reloading
+RUN npm install -g nodemon
+
+CMD ["nodemon", "src/app.js"]

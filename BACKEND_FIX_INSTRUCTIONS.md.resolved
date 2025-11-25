@@ -1,0 +1,563 @@
+# Backend Fix Instructions for AI Agent
+
+> **Use these exact instructions to fix all backend conflicts with the CareFlow frontend.**
+
+---
+
+## 🎯 Overview
+
+You need to implement 3 critical fixes:
+1. Create complete user management module (4 new files)
+2. Add patient creation endpoint that accepts user details
+3. Standardize ALL API responses to use `{ success, data, message }` format
+
+---
+
+## 📋 Fix #1: Create User Management Module
+
+### Create File: `src/validation/user.validation.js`
+
+```javascript
+import Joi from 'joi';
+
+export const getUsersQuerySchema = Joi.object({
+  page: Joi.number().integer().min(1).default(1),
+  limit: Joi.number().integer().min(1).max(100).default(10),
+  role: Joi.string().valid('admin', 'doctor', 'nurse', 'secretary', 'patient', 'pharmacist', 'lab_technician').optional(),
+  isActive: Joi.boolean().optional(),
+  search: Joi.string().trim().optional(),
+  sortBy: Joi.string().valid('createdAt', 'email', 'firstName', 'lastName').default('createdAt'),
+  sortOrder: Joi.string().valid('asc', 'desc').default('desc')
+});
+
+export const updateUserRoleSchema = Joi.object({
+  roleId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required().messages({
+    'string.pattern.base': 'Invalid role ID format',
+    'any.required': 'Role ID is required'
+  })
+});
+
+export const toggleUserStatusSchema = Joi.object({
+  isActive: Joi.boolean().required().messages({
+    'any.required': 'isActive status is required',
+    'boolean.base': 'isActive must be a boolean'
+  })
+});
+
+export const userIdSchema = Joi.object({
+  id: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required().messages({
+    'string.pattern.base': 'Invalid user ID format',
+    'any.required': 'User ID is required'
+  })
+});
+```
+
+### Create File: `src/services/user.service.js`
+
+```javascript
+import User from '../models/user.model.js';
+import Role from '../models/role.model.js';
+import { logger } from '../config/logger.js';
+
+export const getAllUsers = async (query) => {
+  const filter = {};
+  
+  if (query.role) {
+    const role = await Role.findOne({ name: query.role }).select('_id');
+    if (role) filter.role = role._id;
+  }
+  
+  if (query.isActive !== undefined) {
+    filter.isActive = query.isActive;
+  }
+  
+  if (query.search) {
+    filter.$or = [
+      { email: { $regex: query.search, $options: 'i' } },
+      { firstName: { $regex: query.search, $options: 'i' } },
+      { lastName: { $regex: query.search, $options: 'i' } }
+    ];
+  }
+
+  const users = await User.paginate(filter, {
+    page: parseInt(query.page || 1),
+    limit: parseInt(query.limit || 10),
+    sort: { [query.sortBy || 'createdAt']: query.sortOrder === 'asc' ? 1 : -1 },
+    populate: { path: 'role', select: 'name description' },
+    select: '-password -refreshToken'
+  });
+
+  return users;
+};
+
+export const getUserById = async (userId) => {
+  const user = await User.findById(userId)
+    .populate('role', 'name description permissions')
+    .select('-password -refreshToken');
+  
+  if (!user) throw { status: 404, message: 'User not found' };
+  return user;
+};
+
+export const updateUserRole = async (userId, roleId, requestingUserId) => {
+  const user = await User.findById(userId);
+  if (!user) throw { status: 404, message: 'User not found' };
+
+  const role = await Role.findById(roleId);
+  if (!role) throw { status: 404, message: 'Role not found' };
+
+  if (userId === requestingUserId.toString()) {
+    throw { status: 403, message: 'Cannot modify your own role' };
+  }
+
+  user.role = roleId;
+  await user.save();
+
+  await user.populate('role', 'name description');
+  logger.info(`User role updated: ${user.email} -> ${role.name}`);
+
+  return user;
+};
+
+export const toggleUserStatus = async (userId, isActive, requestingUserId) => {
+  const user = await User.findById(userId);
+  if (!user) throw { status: 404, message: 'User not found' };
+
+  if (userId === requestingUserId.toString()) {
+    throw { status: 403, message: 'Cannot modify your own account status' };
+  }
+
+  user.isActive = isActive;
+  await user.save();
+
+  logger.info(`User status updated: ${user.email} -> ${isActive ? 'Active' : 'Inactive'}`);
+  return user;
+};
+```
+
+### Create File: `src/controllers/user.controller.js`
+
+```javascript
+import { logger } from '../config/logger.js';
+import { sendError } from '../helpers/response.helper.js';
+import * as userService from '../services/user.service.js';
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await userService.getAllUsers(req.query);
+    res.status(200).json({
+      success: true,
+      message: 'Users retrieved successfully',
+      data: users
+    });
+  } catch (error) {
+    logger.error('Get all users error:', error);
+    return sendError(res, error.status || 500, error.message || 'Error retrieving users', error);
+  }
+};
+
+export const getUserById = async (req, res) => {
+  try {
+    const user = await userService.getUserById(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: 'User retrieved successfully',
+      data: user
+    });
+  } catch (error) {
+    logger.error('Get user by ID error:', error);
+    return sendError(res, error.status || 500, error.message || 'Error retrieving user', error);
+  }
+};
+
+export const updateUserRole = async (req, res) => {
+  try {
+    const user = await userService.updateUserRole(req.params.id, req.body.roleId, req.user._id);
+    logger.info(`User role updated: ${user.email} by ${req.user.email}`);
+    res.status(200).json({
+      success: true,
+      message: 'User role updated successfully',
+      data: user
+    });
+  } catch (error) {
+    logger.error('Update user role error:', error);
+    return sendError(res, error.status || 500, error.message || 'Error updating user role', error);
+  }
+};
+
+export const toggleUserStatus = async (req, res) => {
+  try {
+    const user = await userService.toggleUserStatus(req.params.id, req.body.isActive, req.user._id);
+    logger.info(`User status toggled: ${user.email} -> ${user.isActive ? 'Active' : 'Inactive'} by ${req.user.email}`);
+    res.status(200).json({
+      success: true,
+      message: `User ${user.isActive ? 'activated' : 'deactivated'} successfully`,
+      data: user
+    });
+  } catch (error) {
+    logger.error('Toggle user status error:', error);
+    return sendError(res, error.status || 500, error.message || 'Error toggling user status', error);
+  }
+};
+```
+
+### Create File: `src/routes/user.routes.js`
+
+```javascript
+import express from 'express';
+import { authenticateToken } from '../middleware/auth.js';
+import { checkPermission } from '../middleware/checkPermission.js';
+import { validate } from '../middleware/validator.js';
+import {
+  getAllUsers,
+  getUserById,
+  updateUserRole,
+  toggleUserStatus
+} from '../controllers/user.controller.js';
+import {
+  getUsersQuerySchema,
+  userIdSchema,
+  updateUserRoleSchema,
+  toggleUserStatusSchema
+} from '../validation/user.validation.js';
+
+const router = express.Router();
+
+router.use(authenticateToken);
+
+router.get(
+  '/',
+  checkPermission('view_all_users'),
+  validate(getUsersQuerySchema, 'query'),
+  getAllUsers
+);
+
+router.get(
+  '/:id',
+  checkPermission('view_all_users'),
+  validate(userIdSchema, 'params'),
+  getUserById
+);
+
+router.patch(
+  '/:id/role',
+  checkPermission('modify_user_roles'),
+  validate(userIdSchema, 'params'),
+  validate(updateUserRoleSchema, 'body'),
+  updateUserRole
+);
+
+router.patch(
+  '/:id/status',
+  checkPermission('suspend_activate_accounts'),
+  validate(userIdSchema, 'params'),
+  validate(toggleUserStatusSchema, 'body'),
+  toggleUserStatus
+);
+
+export default router;
+```
+
+### Modify File: [src/app.js](file:///c:/laragon/www/careflow-web/backend-reference/CareFlow-EHR/src/app.js)
+
+Add this import at the top with other route imports:
+```javascript
+import userRoutes from './routes/user.routes.js';
+```
+
+Add this route registration (after auth routes, around line 80):
+```javascript
+app.use('/api/v1/users', userRoutes);
+```
+
+---
+
+## 📋 Fix #2: Patient Creation with User Details
+
+### Modify File: [src/validation/patient.validation.js](file:///c:/laragon/www/careflow-web/backend-reference/CareFlow-EHR/src/validation/patient.validation.js)
+
+Add this new schema at the end of the file:
+
+```javascript
+export const createPatientWithUserSchema = Joi.object({
+  // User fields
+  firstName: Joi.string().trim().required().min(1).max(50).messages({
+    'string.empty': 'First name is required',
+    'any.required': 'First name is required'
+  }),
+  lastName: Joi.string().trim().required().min(1).max(50).messages({
+    'string.empty': 'Last name is required',
+    'any.required': 'Last name is required'
+  }),
+  email: Joi.string().email().required().messages({
+    'string.email': 'Invalid email format',
+    'any.required': 'Email is required'
+  }),
+  password: Joi.string().min(8).required().messages({
+    'string.min': 'Password must be at least 8 characters',
+    'any.required': 'Password is required'
+  }),
+  // Patient fields
+  dateOfBirth: Joi.date().required().messages({
+    'any.required': 'Date of birth is required'
+  }),
+  gender: Joi.string().valid('male', 'female', 'other').required().messages({
+    'any.only': 'Gender must be male, female, or other',
+    'any.required': 'Gender is required'
+  }),
+  phone: Joi.string().trim().optional(),
+  address: Joi.object({
+    street: Joi.string().optional(),
+    city: Joi.string().optional(),
+    state: Joi.string().optional(),
+    zipCode: Joi.string().optional(),
+    country: Joi.string().optional()
+  }).optional(),
+  bloodType: Joi.string().valid('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-').optional(),
+  allergies: Joi.array().items(Joi.object({
+    allergen: Joi.string().required(),
+    severity: Joi.string().valid('mild', 'moderate', 'severe').required(),
+    notes: Joi.string().optional()
+  })).optional(),
+  emergencyContact: Joi.object({
+    name: Joi.string().optional(),
+    relationship: Joi.string().optional(),
+    phone: Joi.string().optional()
+  }).optional()
+});
+```
+
+### Modify File: [src/controllers/patient.controller.js](file:///c:/laragon/www/careflow-web/backend-reference/CareFlow-EHR/src/controllers/patient.controller.js)
+
+Add these imports at the top:
+```javascript
+import User from '../models/user.model.js';
+import Role from '../models/role.model.js';
+```
+
+Add this new controller function (before or after existing createPatient):
+
+```javascript
+export const createPatientWithUser = async (req, res) => {
+  try {
+    const { firstName, lastName, email, password, dateOfBirth, gender, phone, address, ...patientData } = req.body;
+    
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return sendError(res, 400, 'User with this email already exists');
+    }
+
+    // Get patient role
+    const patientRole = await Role.findOne({ name: 'patient' });
+    if (!patientRole) {
+      return sendError(res, 500, 'Patient role not found in database');
+    }
+
+    // Create user
+    const user = await User.create({
+      email,
+      password,
+      firstName,
+      lastName,
+      role: patientRole._id,
+      isActive: true
+    });
+
+    // Create patient profile
+    const patient = await Patient.create({
+      user: user._id,
+      dateOfBirth,
+      gender,
+      contactInfo: { 
+        phone: phone || '',
+        address: address || {}
+      },
+      ...patientData
+    });
+
+    await patient.populate('user', '-password -refreshToken');
+    logger.info(`Patient created with user: ${email} by ${req.user.email}`);
+
+    res.status(201).json({
+      success: true,
+      message: 'Patient created successfully',
+      data: patient
+    });
+  } catch (error) {
+    logger.error('Create patient with user error:', error);
+    return sendError(res, error.status || 500, error.message || 'Error creating patient', error);
+  }
+};
+```
+
+### Modify File: [src/routes/patient.routes.js](file:///c:/laragon/www/careflow-web/backend-reference/CareFlow-EHR/src/routes/patient.routes.js)
+
+Add import for new validation schema:
+```javascript
+import { createPatientWithUserSchema } from '../validation/patient.validation.js';
+```
+
+Add import for new controller:
+```javascript
+import { createPatientWithUser } from '../controllers/patient.controller.js';
+```
+
+Add this route BEFORE the existing `router.post('/', ...)` route:
+
+```javascript
+router.post(
+  '/create-with-user',
+  checkPermission('create_patient_records'),
+  validate(createPatientWithUserSchema, 'body'),
+  createPatientWithUser
+);
+```
+
+---
+
+## 📋 Fix #3: Standardize API Response Formats
+
+### Modify File: [src/controllers/patient.controller.js](file:///c:/laragon/www/careflow-web/backend-reference/CareFlow-EHR/src/controllers/patient.controller.js)
+
+Update ALL response objects in these functions to use [data](file:///c:/laragon/www/careflow-web/backend-reference/CareFlow-EHR/src/config/storage.js#153-173) wrapper:
+
+```javascript
+// In createPatient function - change:
+res.status(201).json({ success: true, message: 'Patient created successfully', patient });
+// To:
+res.status(201).json({ success: true, message: 'Patient created successfully', data: patient });
+
+// In getPatients function - change:
+res.json({ success: true, patients });
+// To:
+res.json({ success: true, data: patients });
+
+// In getPatientById function - change:
+res.json({ success: true, patient });
+// To:
+res.json({ success: true, data: patient });
+
+// In updatePatient function - change:
+res.json({ success: true, message: 'Patient updated successfully', patient });
+// To:
+res.json({ success: true, message: 'Patient updated successfully', data: patient });
+
+// In addAllergy function - change:
+res.json({ success: true, message: 'Allergy added successfully', patient });
+// To:
+res.json({ success: true, message: 'Allergy added successfully', data: patient });
+
+// In addMedicalHistory function - change:
+res.json({ success: true, message: 'Medical history entry added', patient });
+// To:
+res.json({ success: true, message: 'Medical history entry added', data: patient });
+
+// In getPatientStats function - change:
+res.json({ success: true, stats });
+// To:
+res.json({ success: true, data: stats });
+```
+
+### Modify File: [src/controllers/appointment.controller.js](file:///c:/laragon/www/careflow-web/backend-reference/CareFlow-EHR/src/controllers/appointment.controller.js)
+
+Update ALL response objects:
+
+```javascript
+// In createAppointment - change:
+res.status(201).json({ success: true, message: 'Appointment created successfully', appointment });
+// To:
+res.status(201).json({ success: true, message: 'Appointment created successfully', data: appointment });
+
+// In getAppointments - change:
+res.json({ success: true, appointments, pagination: { page: parseInt(page), pages, total } });
+// To:
+res.json({ success: true, data: { appointments, pagination: { page: parseInt(page), pages, total } } });
+
+// In updateAppointment - change:
+res.json({ success: true, message: 'Appointment updated successfully', appointment });
+// To:
+res.json({ success: true, message: 'Appointment updated successfully', data: appointment });
+
+// In cancelAppointment - change:
+res.json({ success: true, message: 'Appointment cancelled successfully', appointment });
+// To:
+res.json({ success: true, message: 'Appointment cancelled successfully', data: appointment });
+
+// In getDoctorAvailability - change:
+res.json({ success: true, ...availability });
+// To:
+res.json({ success: true, data: availability });
+
+// In completeAppointment - change:
+res.json({ success: true, message: 'Appointment marked as completed', appointment });
+// To:
+res.json({ success: true, message: 'Appointment marked as completed', data: appointment });
+
+// In getAppointmentStats - change:
+res.json({ success: true, stats });
+// To:
+res.json({ success: true, data: stats });
+
+// In getAppointmentsByDoctor - change:
+res.json({ success: true, doctorStats });
+// To:
+res.json({ success: true, data: doctorStats });
+
+// In getDailyAppointmentTrends - change:
+res.json({ success: true, trends, period: `${days} days` });
+// To:
+res.json({ success: true, data: { trends, period: `${days} days` } });
+
+// In getBusiestTimeSlots - change:
+res.json({ success: true, timeSlots });
+// To:
+res.json({ success: true, data: timeSlots });
+```
+
+---
+
+## ✅ Verification Steps
+
+After making all changes:
+
+1. **Test User Endpoints**:
+```bash
+GET http://localhost:5000/api/v1/users
+```
+
+2. **Test Patient Creation**:
+```bash
+POST http://localhost:5000/api/v1/patients/create-with-user
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@test.com",
+  "password": "SecurePass123",
+  "dateOfBirth": "1990-01-01",
+  "gender": "male"
+}
+```
+
+3. **Verify Response Format**:
+All endpoints should return:
+```json
+{
+  "success": true,
+  "message": "...",
+  "data": { ... }
+}
+```
+
+---
+
+## 📝 Summary
+
+**Total Changes**:
+- ✅ 4 new files created
+- ✅ 4 files modified
+- ✅ 1 route registration in app.js
+
+**Estimated Time**: 1-2 hours

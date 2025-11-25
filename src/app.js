@@ -20,6 +20,7 @@ import labResultRoutes from './routes/labResult.routes.js';
 import documentRoutes from './routes/document.routes.js';
 import healthRoutes from './routes/health.routes.js';
 import permissionRoutes from './routes/permission.routes.js';
+import userRoutes from './routes/user.routes.js';
 import { generalLimiter, authLimiter, documentLimiter } from './middleware/rateLimiter.js';
 import { auditMiddleware } from './middleware/auditLogger.js';
 import { errorHandler } from './middleware/errorHandler.js';
@@ -76,6 +77,7 @@ const API_VERSION = '/api/v1';
 app.use('/health', healthRoutes);
 
 app.use(`${API_VERSION}/auth`, authLimiter, authRoutes);
+app.use(`${API_VERSION}/users`, generalLimiter, userRoutes);
 app.use(`${API_VERSION}`, auditMiddleware);
 app.use(`${API_VERSION}/appointments`, generalLimiter, appointmentRoutes);
 app.use(`${API_VERSION}/patients`, generalLimiter, patientRoutes);

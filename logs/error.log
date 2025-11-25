@@ -659,3 +659,5 @@
 2025-11-18 16:56:48 error: Login error: Cannot read properties of null (reading '_id')
 2025-11-18 16:57:38 error: Registration error: secretOrPrivateKey must have a value
 2025-11-18 16:57:38 error: Login error: Cannot read properties of null (reading '_id')
+2025-11-25 10:09:18 error: Create patient error: Invalid patient user
+2025-11-25 10:19:43 error: Create patient error: Invalid patient user

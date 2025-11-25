@@ -2,6 +2,8 @@ import express from 'express';
 import * as patientController from '../controllers/patient.controller.js';
 import { authenticateToken } from '../middleware/auth.js';
 import { checkPermission } from '../middleware/checkPermission.js';
+import { validate } from '../middleware/validator.js';
+import { createPatientWithUserSchema } from '../validation/patient.validation.js';
 
 const router = express.Router();
 
@@ -37,11 +39,18 @@ router.get('/analytics/demographics',
 
 router.get('/analytics/at-risk',
   authenticateToken,
-  checkPermission('edit_medical_history'),
+  checkPermission('view_all_patients'),
   patientController.getPatientsAtRisk
 );
 
-router.post('/', 
+router.post('/create-with-user',
+  authenticateToken,
+  checkPermission('create_patient_records'),
+  validate(createPatientWithUserSchema, 'body'),
+  patientController.createPatientWithUser
+);
+
+router.post('/',
   authenticateToken,
   checkPermission('create_patient_records'),
   patientController.createPatient
@@ -78,4 +87,3 @@ router.post('/:id/medical-history',
 );
 
 export default router;
-
