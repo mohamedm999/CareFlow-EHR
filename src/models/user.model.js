@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -63,6 +64,8 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.comparePassword = async function(candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
+
+userSchema.plugin(mongoosePaginate);
 
 const User = mongoose.model('User', userSchema);
 

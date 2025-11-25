@@ -15,7 +15,7 @@ You need to implement 3 critical fixes:
 
 ## 📋 Fix #1: Create User Management Module
 
-### Create File: `src/validation/user.validation.js`
+### Create File: [src/validation/user.validation.js](file:///c:/laragon/www/careflow-web/backend-reference/CareFlow-EHR/src/validation/user.validation.js)
 
 ```javascript
 import Joi from 'joi';
@@ -373,7 +373,8 @@ export const createPatientWithUser = async (req, res) => {
         phone: phone || '',
         address: address || {}
       },
-      ...patientData
+      ...patientData,
+      createdBy: req.user._id
     });
 
     await patient.populate('user', '-password -refreshToken');
@@ -560,4 +561,20 @@ All endpoints should return:
 - ✅ 4 files modified
 - ✅ 1 route registration in app.js
 
-**Estimated Time**: 1-2 hours
+
+---
+
+## 📋 Fix #4: Fix Document Permission Bug
+
+### Modify File: [src/routes/document.routes.js](file:///c:/laragon/www/careflow-web/backend-reference/CareFlow-EHR/src/routes/document.routes.js)
+
+The backend currently uses `view_documents` permission which **does not exist** in the database. It should be `view_all_documents`.
+
+Change lines 54 and 79:
+
+```javascript
+// Change:
+checkPermission('view_documents'),
+// To:
+checkPermission('view_all_documents'),
+```

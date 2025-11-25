@@ -51,7 +51,7 @@ router.post(
 router.get(
   '/',
   authenticateToken,
-  checkPermission('view_documents'),
+  checkPermission('view_all_documents'),
   validate(searchDocumentsSchema, 'query'),
   getDocuments
 );
@@ -76,7 +76,7 @@ router.get(
 router.get(
   '/:id',
   authenticateToken,
-  checkPermission('view_documents'),
+  checkPermission('view_all_documents'),
   validate(mongoIdSchema, 'params'),
   getDocumentById
 );

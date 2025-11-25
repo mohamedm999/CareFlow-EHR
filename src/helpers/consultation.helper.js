@@ -1,9 +1,13 @@
 import Patient from '../models/patient.model.js';
 
 export const POPULATE_FIELDS = [
-  { path: 'patient', select: 'firstName lastName dateOfBirth gender' },
+  { 
+    path: 'patient', 
+    select: 'user dateOfBirth gender bloodType',
+    populate: { path: 'user', select: 'firstName lastName email' }
+  },
   { path: 'doctor', select: 'firstName lastName email' },
-  { path: 'appointment', select: 'appointmentDate reason status' }
+  { path: 'appointment', select: 'dateTime reason status' }
 ];
 
 export const canAccessConsultation = async (consultation, user) => {

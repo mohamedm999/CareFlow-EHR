@@ -51,7 +51,8 @@ export const createPatientWithUser = async (req, res) => {
         phone: phone || '',
         address: address || {}
       },
-      ...patientData
+      ...patientData,
+      createdBy: req.user.userId  // Track who created the patient
     });
 
     await patient.populate('user', '-password -refreshToken');

@@ -661,3 +661,11 @@
 2025-11-18 16:57:38 error: Login error: Cannot read properties of null (reading '_id')
 2025-11-25 10:09:18 error: Create patient error: Invalid patient user
 2025-11-25 10:19:43 error: Create patient error: Invalid patient user
+2025-11-25 15:39:17 error: Create patient error: Invalid patient user
+2025-11-25 15:39:29 error: Create patient error: Invalid patient user
+2025-11-25 17:16:35 error: Create patient with user error: Patient validation failed: createdBy: Path `createdBy` is required.
+2025-11-25 17:32:11 error: Create patient with user error: Patient validation failed: createdBy: Path `createdBy` is required.
+2025-11-25 17:57:27 error: Create patient with user error: Patient validation failed: createdBy: Path `createdBy` is required.
+2025-11-25 20:03:53 error: Create patient with user error: Patient validation failed: createdBy: Path `createdBy` is required.
+2025-11-25 20:06:06 error: Create patient with user error: Patient validation failed: createdBy: Path `createdBy` is required.
+2025-11-25 20:42:54 error: Create patient with user error: Patient validation failed: createdBy: Path `createdBy` is required.
