@@ -114,7 +114,12 @@ export const validate = (schema, source = 'body') => {
       });
     }
     
-    req[source] = value;
+    if (source === 'query') {
+      // Cannot reassign req.query directly, merge instead
+      Object.assign(req.query, value);
+    } else {
+      req[source] = value;
+    }
     next();
   };
 };
