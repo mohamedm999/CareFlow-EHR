@@ -55,15 +55,38 @@ export const getDocuments = async (query, userId, userRole) => {
 
 export const getDocumentById = async (id, userId, userRole, userIp) => {
   const document = await Document.findById(id)
-    .populate(POPULATE_FIELDS)
-    .populate(POPULATE_VERSIONS);
+    .populate(POPULATE_FIELDS);
 
   if (!document) throw { status: 404, message: 'Document non trouvé' };
-  if (userRole === 'patient' && document.patient._id.toString() !== userId) throw { status: 403, message: 'Accès non autorisé à ce document' };
-  if (!document.hasAccess(userId)) throw { status: 403, message: 'Vous n\'avez pas les permissions pour accéder à ce document' };
+  
+  // Admin can access all documents
+  if (userRole === 'admin') {
+    await document.logAccess(userId, 'view', userIp);
+    return document;
+  }
+  
+  // Uploader can access their own documents
+  if (document.uploadedBy._id.toString() === userId.toString()) {
+    await document.logAccess(userId, 'view', userIp);
+    return document;
+  }
+  
+  // Medical staff (doctor, nurse, lab_technician) can access documents
+  if (['doctor', 'nurse', 'lab_technician', 'pharmacist'].includes(userRole)) {
+    await document.logAccess(userId, 'view', userIp);
+    return document;
+  }
+  
+  // Patient can only access their own documents (patient.user matches userId)
+  if (userRole === 'patient') {
+    if (document.patient?.user?.toString() === userId.toString()) {
+      await document.logAccess(userId, 'view', userIp);
+      return document;
+    }
+    throw { status: 403, message: 'Accès non autorisé à ce document' };
+  }
 
-  await document.logAccess(userId, 'view', userIp);
-  return document;
+  throw { status: 403, message: 'Vous n\'avez pas les permissions pour accéder à ce document' };
 };
 
 export const updateDocument = async (id, updateData, userId, userRole, userIp) => {
@@ -139,7 +162,7 @@ export const createNewVersion = async (id, file, versionNotes, userId, userRole)
     versionNotes
   );
 
-  await document.populate(POPULATE_VERSIONS);
+  await document.populate(POPULATE_FIELDS);
   return document;
 };
 

@@ -90,8 +90,8 @@ const prescriptionSchema = new mongoose.Schema({
   
   prescriptionNumber: {
     type: String,
-    unique: true,
-    required: true
+    unique: true
+    // Auto-generated in pre-save hook, not required on input
   },
   
   prescriptionDate: {

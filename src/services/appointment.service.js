@@ -1,14 +1,25 @@
 import Appointment from '../models/appointment.model.js';
 import User from '../models/user.model.js';
+import Patient from '../models/patient.model.js';
 import { POPULATE_FIELDS, checkTimeConflict, appendNotes, buildRoleFilter, buildDateFilter, buildStatsPipeline, buildDoctorStatsPipeline, buildTrendsPipeline, buildTimeSlotsPipeline, generateAvailableSlots, DEFAULT_STATS } from '../helpers/appointment.helper.js';
 
 export const createAppointment = async (patientId, doctorId, appointmentDate, duration, reason, notes, createdById, role) => {
-  const finalPatientId = role.name === 'patient' ? createdById : patientId;
+  let finalPatientId = patientId;
+  
+  // If the user is a patient, find their Patient record
+  if (role.name === 'patient') {
+    const patientRecord = await Patient.findOne({ user: createdById });
+    if (!patientRecord) {
+      throw { status: 400, message: 'Patient record not found. Please contact support.' };
+    }
+    finalPatientId = patientRecord._id;
+  }
+  
   if (!finalPatientId) throw { status: 400, message: 'Patient ID is required for non-patient users' };
 
   const [doctor, patient] = await Promise.all([
     User.findById(doctorId).populate('role'),
-    User.findById(finalPatientId)
+    Patient.findById(finalPatientId).populate('user')
   ]);
 
   if (!doctor || doctor.role.name !== 'doctor') throw { status: 400, message: 'Invalid doctor ID' };
@@ -38,8 +49,21 @@ export const createAppointment = async (patientId, doctorId, appointmentDate, du
 };
 
 export const getAppointments = async (userId, role, filters, page, limit) => {
+  let patientFilter = {};
+  
+  // For patients, find their Patient record and filter by it
+  if (role.name === 'patient') {
+    const patientRecord = await Patient.findOne({ user: userId });
+    if (patientRecord) {
+      patientFilter = { patient: patientRecord._id };
+    } else {
+      // Patient has no Patient record yet, return empty
+      return { appointments: [], total: 0, pages: 0 };
+    }
+  }
+  
   const filter = {
-    ...(role.name === 'patient' && { patient: userId }),
+    ...patientFilter,
     ...(role.name === 'doctor' && { doctor: userId }),
     ...(filters.status && { status: filters.status }),
     ...(filters.doctorId && ['admin', 'secretary'].includes(role.name) && { doctor: filters.doctorId }),

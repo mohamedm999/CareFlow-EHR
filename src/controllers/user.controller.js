@@ -16,6 +16,21 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
+// Public endpoint for getting doctors list (for appointment booking)
+export const getDoctorsList = async (req, res) => {
+  try {
+    const doctors = await userService.getDoctorsList(req.query);
+    res.status(200).json({
+      success: true,
+      message: 'Doctors retrieved successfully',
+      data: doctors
+    });
+  } catch (error) {
+    logger.error('Get doctors list error:', error);
+    return sendError(res, error.status || 500, error.message || 'Error retrieving doctors', error);
+  }
+};
+
 export const getUserById = async (req, res) => {
   try {
     const user = await userService.getUserById(req.params.id);

@@ -11,7 +11,9 @@ export const createLabOrder = async (orderData, userId) => {
   if (!patient) throw { status: 404, message: 'Patient non trouvé' };
   if (orderData.consultation && !consultation) throw { status: 404, message: 'Consultation non trouvée' };
 
-  const labOrder = await LabOrder.create({ ...orderData, orderedBy: userId });
+  // Use new + save() to trigger pre-save hook for orderNumber generation
+  const labOrder = new LabOrder({ ...orderData, doctor: orderData.doctor || userId });
+  await labOrder.save();
   await labOrder.populate(POPULATE_BASIC);
   return labOrder;
 };
@@ -30,10 +32,10 @@ export const getLabOrders = async (query, userId, userRole) => {
   return result;
 };
 
-export const getLabOrderById = async (id, userId, userRole) => {
+export const getLabOrderById = async (id, userId, userRole, userPermissions = []) => {
   const labOrder = await LabOrder.findById(id).populate(POPULATE_FIELDS);
   if (!labOrder) throw { status: 404, message: 'Ordre de laboratoire non trouvé' };
-  if (!canAccessLabOrder(labOrder, userId, userRole)) throw { status: 403, message: 'Accès non autorisé à cet ordre' };
+  if (!canAccessLabOrder(labOrder, userId, userRole, userPermissions)) throw { status: 403, message: 'Accès non autorisé à cet ordre' };
   return labOrder;
 };
 

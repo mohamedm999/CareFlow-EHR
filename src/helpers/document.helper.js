@@ -8,7 +8,8 @@ export const POPULATE_FIELDS = [
   { path: 'prescription', select: 'prescriptionNumber medications status' }
 ];
 
-export const POPULATE_VERSIONS = { path: 'versions.uploadedBy', select: 'firstName lastName email' };
+// Versions field doesn't exist in schema - removed invalid populate
+export const POPULATE_VERSIONS = null;
 
 export const calculateChecksum = (buffer) => crypto.createHash('sha256').update(buffer).digest('hex');
 

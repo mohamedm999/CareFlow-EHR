@@ -25,7 +25,8 @@ export const getPrescriptions = async (req, res) => {
 
 export const getPrescriptionById = async (req, res) => {
   try {
-    const prescription = await prescriptionService.getPrescriptionById(req.params.id, req.user._id, req.user.role.name);
+    const userPermissions = req.user.role?.permissions || [];
+    const prescription = await prescriptionService.getPrescriptionById(req.params.id, req.user._id, req.user.role.name, userPermissions);
     res.status(200).json({ success: true, data: prescription });
   } catch (error) {
     logger.error('Erreur récupération prescription:', error);

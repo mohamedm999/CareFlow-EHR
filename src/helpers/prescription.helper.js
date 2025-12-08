@@ -56,21 +56,39 @@ export const applyRoleFilter = async (filter, userId, userRole, Patient, Pharmac
   return filter;
 };
 
-export const canAccessPrescription = async (prescription, userId, userRole, Patient, Pharmacy) => {
+// Helper to get ID from either ObjectId or populated object
+const getDocId = (doc) => {
+  if (!doc) return null;
+  return doc._id ? doc._id.toString() : doc.toString();
+};
+
+export const canAccessPrescription = async (prescription, userId, userRole, Patient, Pharmacy, userPermissions = []) => {
+  // Admin always has access
   if (userRole === 'admin') return true;
+  
+  // Check if user has view_all_prescriptions permission
+  const hasViewAll = userPermissions.some(p => 
+    (typeof p === 'string' ? p : p.name) === 'view_all_prescriptions'
+  );
+  if (hasViewAll) return true;
+  
+  const userIdStr = userId.toString();
   
   if (userRole === 'patient') {
     const patientRecord = await Patient.findOne({ user: userId });
-    return patientRecord && prescription.patient._id.toString() === patientRecord._id.toString();
+    const prescriptionPatientId = getDocId(prescription.patient);
+    return patientRecord && prescriptionPatientId === patientRecord._id.toString();
   }
   
-  if (userRole === 'doctor') {
-    return prescription.doctor._id.toString() === userId;
+  if (userRole === 'doctor' || userRole === 'nurse') {
+    const prescriptionDoctorId = getDocId(prescription.doctor);
+    return prescriptionDoctorId === userIdStr;
   }
   
   if (userRole === 'pharmacist') {
     const userPharmacy = await Pharmacy.findOne({ assignedUsers: userId });
-    return userPharmacy && prescription.pharmacy && prescription.pharmacy._id.toString() === userPharmacy._id.toString();
+    const prescriptionPharmacyId = getDocId(prescription.pharmacy);
+    return userPharmacy && prescriptionPharmacyId && prescriptionPharmacyId === userPharmacy._id.toString();
   }
   
   return false;
@@ -78,13 +96,15 @@ export const canAccessPrescription = async (prescription, userId, userRole, Pati
 
 export const canModifyPrescription = (prescription, userId, userRole) => {
   if (userRole === 'admin') return true;
-  if (prescription.doctor.toString() !== userId) return false;
+  const prescriptionDoctorId = getDocId(prescription.doctor);
+  if (prescriptionDoctorId !== userId.toString()) return false;
   return !IMMUTABLE_STATUSES.includes(prescription.status);
 };
 
 export const canCancelPrescription = (prescription, userId, userRole) => {
   if (userRole === 'admin') return true;
-  if (prescription.doctor.toString() !== userId) return false;
+  const prescriptionDoctorId = getDocId(prescription.doctor);
+  if (prescriptionDoctorId !== userId.toString()) return false;
   return !CANCELLABLE_STATUSES.includes(prescription.status);
 };
 

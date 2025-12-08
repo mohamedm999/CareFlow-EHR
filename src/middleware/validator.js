@@ -88,17 +88,12 @@ export const validateAppointment = [
  */
 export const validate = (schema, source = 'body') => {
   return (req, res, next) => {
-    if (!req[source]) {
-      return res.status(400).json({
-        success: false,
-        message: `No ${source} data provided`
-      });
-    }
+    const dataToValidate = req[source] || {};
 
-    const dataToValidate = req[source];
     const { error, value } = schema.validate(dataToValidate, {
       abortEarly: false,
-      stripUnknown: true
+      stripUnknown: true,
+      convert: true  // Explicitly enable type conversion (important for query params)
     });
     
     if (error) {

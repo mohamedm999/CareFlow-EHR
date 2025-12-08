@@ -33,6 +33,34 @@ export const getAllUsers = async (query) => {
   return users;
 };
 
+// Public endpoint for getting doctors list (any authenticated user)
+export const getDoctorsList = async (query) => {
+  const doctorRole = await Role.findOne({ name: 'doctor' }).select('_id');
+  if (!doctorRole) return { docs: [], totalDocs: 0, page: 1, totalPages: 0 };
+
+  const filter = {
+    role: doctorRole._id,
+    isActive: true // Only active doctors
+  };
+  
+  if (query.search) {
+    filter.$or = [
+      { firstName: { $regex: query.search, $options: 'i' } },
+      { lastName: { $regex: query.search, $options: 'i' } }
+    ];
+  }
+
+  const doctors = await User.paginate(filter, {
+    page: parseInt(query.page || 1),
+    limit: parseInt(query.limit || 100),
+    sort: { firstName: 1, lastName: 1 },
+    populate: { path: 'role', select: 'name description' },
+    select: 'firstName lastName email specialization licenseNumber' // Only return necessary fields
+  });
+
+  return doctors;
+};
+
 export const getUserById = async (userId) => {
   const user = await User.findById(userId)
     .populate('role', 'name description permissions')

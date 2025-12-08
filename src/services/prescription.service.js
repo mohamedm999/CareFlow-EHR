@@ -14,10 +14,12 @@ export const createPrescription = async (prescriptionData, userId) => {
   if (prescriptionData.pharmacy && !pharmacy) throw { status: 404, message: 'Pharmacie non trouvée' };
   if (prescriptionData.consultation && !consultation) throw { status: 404, message: 'Consultation non trouvée' };
 
-  const prescription = await Prescription.create({
+  // Use new + save() to trigger pre-save hook for prescriptionNumber generation
+  const prescription = new Prescription({
     ...prescriptionData,
     doctor: prescriptionData.doctor || userId
   });
+  await prescription.save();
 
   await prescription.populate(POPULATE_BASIC);
   return prescription;
@@ -37,11 +39,11 @@ export const getPrescriptions = async (query, userId, userRole) => {
   return await Prescription.paginate(filter, options);
 };
 
-export const getPrescriptionById = async (id, userId, userRole) => {
+export const getPrescriptionById = async (id, userId, userRole, userPermissions = []) => {
   const prescription = await Prescription.findById(id).populate(POPULATE_FIELDS);
   if (!prescription) throw { status: 404, message: 'Prescription non trouvée' };
 
-  const hasAccess = await canAccessPrescription(prescription, userId, userRole, Patient, Pharmacy);
+  const hasAccess = await canAccessPrescription(prescription, userId, userRole, Patient, Pharmacy, userPermissions);
   if (!hasAccess) throw { status: 403, message: 'Accès non autorisé à cette prescription' };
 
   return prescription;

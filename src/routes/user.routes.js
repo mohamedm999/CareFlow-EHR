@@ -6,7 +6,8 @@ import {
   getAllUsers,
   getUserById,
   updateUserRole,
-  toggleUserStatus
+  toggleUserStatus,
+  getDoctorsList
 } from '../controllers/user.controller.js';
 import {
   getUsersQuerySchema,
@@ -18,6 +19,10 @@ import {
 const router = express.Router();
 
 router.use(authenticateToken);
+
+// Public endpoint for getting doctors list (for appointment booking)
+// Any authenticated user can access this
+router.get('/doctors', getDoctorsList);
 
 router.get(
   '/',

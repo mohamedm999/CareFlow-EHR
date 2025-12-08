@@ -671,3 +671,30 @@
 2025-11-25 20:42:54 error: Create patient with user error: Patient validation failed: createdBy: Path `createdBy` is required.
 2025-11-26 01:26:58 error: Create appointment error: Patient not found
 2025-11-26 01:33:45 error: Create appointment error: Patient not found
+2025-12-07 13:23:04 error: Erreur création prescription: Prescription validation failed: prescriptionNumber: Path `prescriptionNumber` is required.
+2025-12-07 18:11:08 error: Erreur création ordre laboratoire: LabOrder validation failed: doctor: Path `doctor` is required.
+2025-12-07 18:13:06 error: Authentication error: jwt malformed
+2025-12-07 23:17:52 error: Erreur création ordre laboratoire: LabOrder validation failed: doctor: Path `doctor` is required., priority: `asap` is not a valid enum value for path `priority`.
+2025-12-07 23:21:03 error: Erreur création ordre laboratoire: Cannot populate path `orderedBy` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025-12-07 23:21:14 error: Erreur récupération ordres laboratoire: Cannot populate path `orderedBy` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025-12-07 23:21:15 error: Erreur récupération ordres laboratoire: Cannot populate path `orderedBy` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025-12-07 23:21:26 error: Erreur création ordre laboratoire: Cannot populate path `orderedBy` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025-12-07 23:27:49 error: Erreur récupération ordres laboratoire: Cannot populate path `orderedBy` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025-12-07 23:27:51 error: Erreur récupération ordres laboratoire: Cannot populate path `orderedBy` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025-12-07 23:28:01 error: Erreur création ordre laboratoire: Cannot populate path `orderedBy` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025-12-07 23:40:54 error: Erreur lors de l'upload du fichier:
+2025-12-07 23:40:54 error: Erreur upload document:
+2025-12-07 23:41:55 error: Erreur lors de l'upload du fichier:
+2025-12-07 23:41:55 error: Erreur upload document:
+2025-12-07 23:47:20 error: Erreur lors de l'upload du fichier: The specified bucket does not exist
+2025-12-07 23:47:20 error: Erreur upload document: The specified bucket does not exist
+2025-12-07 23:49:13 error: Erreur récupération document: Cannot populate path `versions.uploadedBy` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025-12-07 23:49:14 error: Erreur récupération document: Cannot populate path `versions.uploadedBy` because it is not in your schema. Set the `strictPopulate` option to false to override.
+2025-12-07 23:52:52 error: Erreur récupération document: Vous n'avez pas les permissions pour accéder à ce document
+2025-12-07 23:52:58 error: Erreur récupération document: Vous n'avez pas les permissions pour accéder à ce document
+2025-12-07 23:53:20 error: Erreur récupération document: Vous n'avez pas les permissions pour accéder à ce document
+2025-12-07 23:53:22 error: Erreur récupération document: Vous n'avez pas les permissions pour accéder à ce document
+2025-12-08 00:37:32 error: Erreur récupération consultation: Accès non autorisé à cette consultation
+2025-12-08 00:37:33 error: Erreur récupération consultation: Accès non autorisé à cette consultation
+2025-12-08 00:41:01 error: Erreur récupération prescription: Accès non autorisé à cette prescription
+2025-12-08 00:41:02 error: Erreur récupération prescription: Accès non autorisé à cette prescription

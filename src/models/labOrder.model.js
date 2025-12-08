@@ -56,8 +56,8 @@ const labTestSchema = new mongoose.Schema({
 const labOrderSchema = new mongoose.Schema({
   orderNumber: {
     type: String,
-    unique: true,
-    required: true
+    unique: true
+    // Auto-generated in pre-save hook, not required on input
   },
   
   patient: {

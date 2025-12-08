@@ -36,7 +36,8 @@ export const getLabOrders = async (req, res) => {
 
 export const getLabOrderById = async (req, res) => {
   try {
-    const labOrder = await labOrderService.getLabOrderById(req.params.id, req.user._id, req.user.role);
+    const userPermissions = req.user.role?.permissions || [];
+    const labOrder = await labOrderService.getLabOrderById(req.params.id, req.user._id, req.user.role.name, userPermissions);
     res.json({ success: true, data: labOrder });
   } catch (error) {
     logger.error('Erreur récupération ordre laboratoire:', error);

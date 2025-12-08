@@ -1,12 +1,12 @@
 export const POPULATE_FIELDS = [
   { path: 'patient', select: 'firstName lastName dateOfBirth gender contactNumber email' },
-  { path: 'orderedBy', select: 'firstName lastName email specialization' },
+  { path: 'doctor', select: 'firstName lastName email specialization' },
   { path: 'consultation', select: 'consultationType chiefComplaint diagnosis createdAt' }
 ];
 
 export const POPULATE_BASIC = [
   { path: 'patient', select: 'firstName lastName dateOfBirth gender' },
-  { path: 'orderedBy', select: 'firstName lastName email' },
+  { path: 'doctor', select: 'firstName lastName email' },
   { path: 'consultation', select: 'consultationType chiefComplaint' }
 ];
 
@@ -26,7 +26,7 @@ export const buildLabOrderFilter = (query, userId, userRole) => {
   const filter = {};
 
   if (userRole === 'patient') filter.patient = userId;
-  else if (userRole === 'doctor') filter.orderedBy = userId;
+  else if (userRole === 'doctor') filter.doctor = userId;
 
   if (query.patient) filter.patient = query.patient;
   if (query.consultation) filter.consultation = query.consultation;
@@ -44,8 +44,38 @@ export const buildLabOrderFilter = (query, userId, userRole) => {
   return filter;
 };
 
-export const canAccessLabOrder = (labOrder, userId, userRole) => {
-  return userRole !== 'patient' || labOrder.patient._id.toString() === userId;
+// Helper to get ID from either ObjectId or populated object
+const getDocId = (doc) => {
+  if (!doc) return null;
+  return doc._id ? doc._id.toString() : doc.toString();
+};
+
+export const canAccessLabOrder = (labOrder, userId, userRole, userPermissions = []) => {
+  // Admin always has access
+  if (userRole === 'admin') return true;
+  
+  // Check if user has view_all_lab_orders permission
+  const hasViewAll = userPermissions.some(p => 
+    (typeof p === 'string' ? p : p.name) === 'view_all_lab_orders'
+  );
+  if (hasViewAll) return true;
+  
+  const userIdStr = userId.toString();
+  const labOrderDoctorId = getDocId(labOrder.doctor);
+  const labOrderPatientId = getDocId(labOrder.patient);
+  
+  // Doctors can access their own orders
+  if (userRole === 'doctor' && labOrderDoctorId === userIdStr) return true;
+  
+  // Lab technicians can access all lab orders (they have view_lab_orders)
+  if (userRole === 'lab_technician') return true;
+  
+  // Patients can only access their own lab orders
+  if (userRole === 'patient') {
+    return labOrderPatientId === userIdStr;
+  }
+  
+  return false;
 };
 
 export const canModifyLabOrder = (labOrder) => {
