@@ -1776,3 +1776,478 @@
 2025-12-08 01:09:50 info: Roles and permissions already seeded, skipping...
 2025-12-08 01:09:50 info: Admin user already exists, skipping admin seed...
 2025-12-08 01:09:50 info: Server running on port 3000
+2025-12-08 00:11:49 info: Connected to MongoDB successfully
+2025-12-08 00:11:50 info: Roles and permissions already seeded, skipping...
+2025-12-08 00:11:50 info: Admin user already exists, skipping admin seed...
+2025-12-08 00:11:50 info: Server running on port 3000
+2025-12-08 00:13:54 info: Pharmacie créée: 69361842b92bd2d5c44e248b
+2025-12-08 00:14:08 info: Prescription créée: RX-2025-000001 par admin@careflow.com
+2025-12-08 00:14:35 info: Fichier uploadé avec succès: documents/692636ad688be8be43451f05/1765152875743-899f61f3fa3cc9ad2d1aa3525a1a8136.pdf
+2025-12-08 00:14:35 info: Document uploadé: 6936186bb92bd2d5c44e24cf
+2025-12-10 13:11:41 info: Connected to MongoDB successfully
+2025-12-10 13:11:41 info: Roles and permissions already seeded, skipping...
+2025-12-10 13:11:41 info: Admin user already exists, skipping admin seed...
+2025-12-10 13:11:41 info: Server running on port 3000
+2025-12-20 18:29:31 info: Connected to MongoDB successfully
+2025-12-20 18:29:31 info: Roles and permissions already seeded, skipping...
+2025-12-20 18:29:31 info: Admin user already exists, skipping admin seed...
+2025-12-20 18:29:31 info: Server running on port 3000
+2025-12-23 07:46:04 warn: MongoDB disconnected
+2025-12-23 08:02:36 warn: MongoDB disconnected
+2025-12-23 08:30:59 info: Connected to MongoDB successfully
+2025-12-23 08:30:59 info: Roles and permissions already seeded, skipping...
+2025-12-23 08:30:59 info: Admin user already exists, skipping admin seed...
+2025-12-23 08:30:59 info: Server running on port 3000
+2025-12-25 17:51:14 info: Connected to MongoDB successfully
+2025-12-25 17:51:14 info: Roles and permissions already seeded, skipping...
+2025-12-25 17:51:14 info: Admin user already exists, skipping admin seed...
+2025-12-25 17:51:14 info: Server running on port 3000
+2025-12-26 07:58:55 warn: MongoDB disconnected
+2025-12-26 09:57:02 warn: MongoDB disconnected
+2025-12-26 15:37:46 warn: MongoDB disconnected
+2025-12-27 14:17:13 warn: MongoDB disconnected
+2025-12-27 15:38:45 warn: MongoDB disconnected
+2025-12-27 15:45:47 warn: MongoDB disconnected
+2025-12-27 16:24:00 warn: MongoDB disconnected
+2025-12-27 16:44:35 warn: MongoDB disconnected
+2025-12-27 17:13:40 warn: MongoDB disconnected
+2025-12-27 20:19:57 warn: MongoDB disconnected
+2025-12-28 13:18:59 warn: MongoDB disconnected
+2025-12-28 13:24:12 warn: MongoDB disconnected
+2025-12-28 14:16:11 warn: MongoDB disconnected
+2025-12-28 14:26:05 warn: MongoDB disconnected
+2025-12-28 15:17:32 warn: MongoDB disconnected
+2025-12-28 15:37:39 warn: MongoDB disconnected
+2025-12-28 17:01:03 warn: MongoDB disconnected
+2025-12-28 17:23:20 warn: MongoDB disconnected
+2025-12-29 07:18:08 warn: MongoDB disconnected
+2025-12-29 07:44:10 warn: MongoDB disconnected
+2025-12-29 09:51:49 warn: MongoDB disconnected
+2025-12-29 10:29:20 warn: MongoDB disconnected
+2025-12-29 14:16:22 warn: MongoDB disconnected
+2025-12-29 14:50:07 warn: MongoDB disconnected
+2025-12-29 15:23:21 warn: MongoDB disconnected
+2025-12-29 17:16:47 warn: MongoDB disconnected
+2025-12-29 18:13:48 warn: MongoDB disconnected
+2025-12-30 08:32:44 info: Connected to MongoDB successfully
+2025-12-30 08:32:45 info: Roles and permissions already seeded, skipping...
+2025-12-30 08:32:45 info: Admin user already exists, skipping admin seed...
+2025-12-30 08:32:45 info: Server running on port 3000
+2025-12-30 08:38:27 info: Connected to MongoDB successfully
+2025-12-30 08:38:27 info: Roles and permissions already seeded, skipping...
+2025-12-30 08:38:27 info: Admin user already exists, skipping admin seed...
+2025-12-30 08:38:27 info: Server running on port 3000
+2026-01-01 15:32:48 warn: MongoDB disconnected
+2026-01-01 15:38:27 warn: MongoDB disconnected
+2026-01-01 15:41:48 info: Connected to MongoDB successfully
+2026-01-01 15:41:48 info: Roles and permissions already seeded, skipping...
+2026-01-01 15:41:48 info: Admin user already exists, skipping admin seed...
+2026-01-01 15:41:48 info: Server running on port 3000
+2026-01-04 18:37:00 warn: MongoDB disconnected
+2026-01-04 20:20:41 warn: MongoDB disconnected
+2026-01-04 20:36:01 warn: MongoDB disconnected
+2026-01-04 20:41:01 warn: MongoDB disconnected
+2026-01-04 20:49:14 warn: MongoDB disconnected
+2026-01-04 21:23:55 warn: MongoDB disconnected
+2026-01-04 21:33:49 warn: MongoDB disconnected
+2026-01-04 21:46:01 warn: MongoDB disconnected
+2026-01-04 21:53:46 warn: MongoDB disconnected
+2026-01-04 22:00:49 warn: MongoDB disconnected
+2026-01-04 22:05:09 warn: MongoDB disconnected
+2026-01-04 22:24:31 warn: MongoDB disconnected
+2026-01-04 22:29:36 warn: MongoDB disconnected
+2026-01-05 07:32:23 warn: MongoDB disconnected
+2026-01-05 07:37:29 warn: MongoDB disconnected
+2026-01-05 07:47:52 warn: MongoDB disconnected
+2026-01-05 07:54:06 warn: MongoDB disconnected
+2026-01-05 08:01:38 warn: MongoDB disconnected
+2026-01-05 08:05:39 warn: MongoDB disconnected
+2026-01-05 08:09:48 warn: MongoDB disconnected
+2026-01-05 08:12:00 warn: MongoDB disconnected
+2026-01-05 08:21:23 warn: MongoDB disconnected
+2026-01-05 08:37:10 warn: MongoDB disconnected
+2026-01-06 08:51:20 info: Connected to MongoDB successfully
+2026-01-06 08:51:20 info: Roles and permissions already seeded, skipping...
+2026-01-06 08:51:20 info: Admin user already exists, skipping admin seed...
+2026-01-06 08:51:20 info: Server running on port 3000
+2026-01-09 08:04:34 warn: MongoDB disconnected
+2026-01-09 08:07:02 warn: MongoDB disconnected
+2026-01-09 08:15:06 warn: MongoDB disconnected
+2026-01-11 09:38:24 warn: MongoDB disconnected
+2026-01-11 09:43:53 warn: MongoDB disconnected
+2026-01-11 09:53:06 warn: MongoDB disconnected
+2026-01-11 10:01:22 info: Connected to MongoDB successfully
+2026-01-11 10:01:22 info: Roles and permissions already seeded, skipping...
+2026-01-11 10:01:22 info: Admin user already exists, skipping admin seed...
+2026-01-11 10:01:22 info: Server running on port 3000
+2026-01-12 08:07:17 warn: MongoDB disconnected
+2026-01-12 08:36:17 info: Connected to MongoDB successfully
+2026-01-12 08:36:17 info: Roles and permissions already seeded, skipping...
+2026-01-12 08:36:17 info: Admin user already exists, skipping admin seed...
+2026-01-12 08:36:17 info: Server running on port 3000
+2026-01-14 07:09:26 warn: MongoDB disconnected
+2026-01-14 12:30:29 info: Connected to MongoDB successfully
+2026-01-14 12:30:29 info: Roles and permissions already seeded, skipping...
+2026-01-14 12:30:29 info: Admin user already exists, skipping admin seed...
+2026-01-14 12:30:29 info: Server running on port 3000
+2026-01-16 16:13:01 warn: MongoDB disconnected
+2026-01-16 16:37:35 warn: MongoDB disconnected
+2026-01-16 17:17:24 warn: MongoDB disconnected
+2026-01-16 17:59:03 warn: MongoDB disconnected
+2026-01-17 16:58:50 warn: MongoDB disconnected
+2026-01-17 17:36:53 warn: MongoDB disconnected
+2026-01-18 17:24:26 warn: MongoDB disconnected
+2026-01-18 23:28:49 warn: MongoDB disconnected
+2026-01-19 11:42:44 warn: MongoDB disconnected
+2026-01-19 15:58:01 warn: MongoDB disconnected
+2026-01-20 06:51:03 warn: MongoDB disconnected
+2026-01-20 11:00:13 warn: MongoDB disconnected
+2026-01-20 16:26:19 warn: MongoDB disconnected
+2026-01-20 17:03:49 warn: MongoDB disconnected
+2026-01-20 17:11:47 info: Connected to MongoDB successfully
+2026-01-20 17:11:48 info: Roles and permissions already seeded, skipping...
+2026-01-20 17:11:48 info: Admin user already exists, skipping admin seed...
+2026-01-20 17:11:48 info: Server running on port 3000
+2026-01-22 07:52:52 warn: MongoDB disconnected
+2026-01-22 07:55:17 warn: MongoDB disconnected
+2026-01-22 08:06:48 warn: MongoDB disconnected
+2026-01-22 08:20:32 warn: MongoDB disconnected
+2026-01-22 08:37:06 warn: MongoDB disconnected
+2026-01-22 08:53:52 warn: MongoDB disconnected
+2026-01-22 09:06:30 warn: MongoDB disconnected
+2026-01-22 09:13:13 warn: MongoDB disconnected
+2026-01-22 09:40:28 warn: MongoDB disconnected
+2026-01-22 10:06:41 warn: MongoDB disconnected
+2026-01-22 10:27:21 warn: MongoDB disconnected
+2026-01-22 10:35:04 warn: MongoDB disconnected
+2026-01-22 10:42:09 warn: MongoDB disconnected
+2026-01-22 10:51:52 warn: MongoDB disconnected
+2026-01-22 10:58:43 warn: MongoDB disconnected
+2026-01-22 11:06:26 warn: MongoDB disconnected
+2026-01-22 12:25:34 warn: MongoDB disconnected
+2026-01-22 12:41:29 warn: MongoDB disconnected
+2026-01-22 13:28:24 warn: MongoDB disconnected
+2026-01-22 14:02:38 warn: MongoDB disconnected
+2026-01-22 14:46:32 warn: MongoDB disconnected
+2026-01-22 15:18:57 warn: MongoDB disconnected
+2026-01-22 15:39:18 warn: MongoDB disconnected
+2026-01-22 23:29:24 warn: MongoDB disconnected
+2026-01-22 23:53:34 warn: MongoDB disconnected
+2026-01-23 00:01:25 warn: MongoDB disconnected
+2026-01-23 00:20:06 warn: MongoDB disconnected
+2026-01-23 00:36:19 warn: MongoDB disconnected
+2026-01-23 00:47:17 warn: MongoDB disconnected
+2026-01-23 00:56:30 warn: MongoDB disconnected
+2026-01-23 01:11:27 warn: MongoDB disconnected
+2026-01-23 01:22:32 warn: MongoDB disconnected
+2026-01-23 01:47:31 warn: MongoDB disconnected
+2026-01-23 01:58:52 warn: MongoDB disconnected
+2026-01-24 20:59:26 warn: MongoDB disconnected
+2026-01-24 21:16:44 warn: MongoDB disconnected
+2026-01-24 21:58:15 warn: MongoDB disconnected
+2026-01-24 22:01:45 warn: MongoDB disconnected
+2026-01-24 22:12:09 warn: MongoDB disconnected
+2026-01-24 22:25:07 warn: MongoDB disconnected
+2026-01-24 22:29:33 warn: MongoDB disconnected
+2026-01-24 22:44:27 warn: MongoDB disconnected
+2026-01-24 23:18:58 warn: MongoDB disconnected
+2026-01-24 23:40:49 warn: MongoDB disconnected
+2026-01-24 23:52:37 warn: MongoDB disconnected
+2026-01-25 10:43:17 warn: MongoDB disconnected
+2026-01-25 10:52:25 warn: MongoDB disconnected
+2026-01-25 11:10:05 warn: MongoDB disconnected
+2026-01-25 16:13:53 warn: MongoDB disconnected
+2026-01-25 16:22:47 warn: MongoDB disconnected
+2026-01-25 16:28:04 warn: MongoDB disconnected
+2026-01-25 16:47:58 warn: MongoDB disconnected
+2026-01-25 16:55:00 warn: MongoDB disconnected
+2026-01-25 17:09:18 warn: MongoDB disconnected
+2026-01-25 17:42:26 warn: MongoDB disconnected
+2026-01-25 18:08:13 warn: MongoDB disconnected
+2026-01-25 18:14:51 warn: MongoDB disconnected
+2026-01-25 19:01:30 warn: MongoDB disconnected
+2026-01-25 19:11:37 warn: MongoDB disconnected
+2026-01-25 19:19:41 warn: MongoDB disconnected
+2026-01-25 19:36:25 warn: MongoDB disconnected
+2026-01-25 20:08:22 warn: MongoDB disconnected
+2026-01-25 20:40:51 warn: MongoDB disconnected
+2026-01-26 07:51:45 warn: MongoDB disconnected
+2026-01-26 08:15:59 warn: MongoDB disconnected
+2026-01-26 08:43:33 warn: MongoDB disconnected
+2026-01-26 09:03:27 warn: MongoDB disconnected
+2026-01-26 09:29:06 warn: MongoDB disconnected
+2026-01-26 09:38:30 warn: MongoDB disconnected
+2026-01-26 10:38:24 warn: MongoDB disconnected
+2026-01-26 10:53:11 warn: MongoDB disconnected
+2026-01-26 12:37:42 warn: MongoDB disconnected
+2026-01-26 13:24:55 warn: MongoDB disconnected
+2026-01-26 13:34:08 warn: MongoDB disconnected
+2026-01-26 13:43:23 warn: MongoDB disconnected
+2026-01-26 13:56:18 warn: MongoDB disconnected
+2026-01-26 14:06:56 warn: MongoDB disconnected
+2026-01-26 14:50:03 warn: MongoDB disconnected
+2026-01-26 14:57:30 warn: MongoDB disconnected
+2026-01-26 15:12:11 warn: MongoDB disconnected
+2026-01-27 08:01:28 warn: MongoDB disconnected
+2026-01-27 08:13:39 warn: MongoDB disconnected
+2026-01-27 08:21:47 warn: MongoDB disconnected
+2026-01-27 08:33:03 warn: MongoDB disconnected
+2026-01-27 08:44:17 warn: MongoDB disconnected
+2026-01-27 09:30:46 warn: MongoDB disconnected
+2026-01-27 09:51:22 warn: MongoDB disconnected
+2026-01-27 10:40:39 warn: MongoDB disconnected
+2026-01-27 11:24:24 warn: MongoDB disconnected
+2026-01-27 12:22:53 warn: MongoDB disconnected
+2026-01-27 12:30:12 warn: MongoDB disconnected
+2026-01-27 12:34:56 warn: MongoDB disconnected
+2026-01-27 12:44:52 warn: MongoDB disconnected
+2026-01-27 13:31:06 warn: MongoDB disconnected
+2026-01-27 13:38:28 warn: MongoDB disconnected
+2026-01-27 13:49:37 warn: MongoDB disconnected
+2026-01-27 14:00:45 warn: MongoDB disconnected
+2026-01-27 14:24:49 warn: MongoDB disconnected
+2026-01-27 14:38:00 warn: MongoDB disconnected
+2026-01-27 14:49:09 warn: MongoDB disconnected
+2026-01-27 14:56:05 warn: MongoDB disconnected
+2026-01-27 15:01:12 warn: MongoDB disconnected
+2026-01-27 15:12:31 warn: MongoDB disconnected
+2026-01-27 15:17:48 warn: MongoDB disconnected
+2026-01-27 15:27:34 warn: MongoDB disconnected
+2026-01-27 15:45:47 warn: MongoDB disconnected
+2026-01-27 15:54:58 warn: MongoDB disconnected
+2026-01-27 21:10:03 warn: MongoDB disconnected
+2026-01-27 21:17:41 info: Connected to MongoDB successfully
+2026-01-27 21:17:41 info: Roles and permissions already seeded, skipping...
+2026-01-27 21:17:41 info: Admin user already exists, skipping admin seed...
+2026-01-27 21:17:41 info: Server running on port 3000
+2026-01-28 08:16:34 warn: MongoDB disconnected
+2026-01-28 08:30:11 warn: MongoDB disconnected
+2026-01-28 09:36:44 warn: MongoDB disconnected
+2026-01-28 15:02:22 warn: MongoDB disconnected
+2026-01-28 23:14:52 warn: MongoDB disconnected
+2026-01-29 08:25:22 warn: MongoDB disconnected
+2026-01-29 09:13:49 warn: MongoDB disconnected
+2026-01-29 11:25:59 warn: MongoDB disconnected
+2026-01-29 13:33:53 info: Connected to MongoDB successfully
+2026-01-29 13:33:53 info: Roles and permissions already seeded, skipping...
+2026-01-29 13:33:53 info: Admin user already exists, skipping admin seed...
+2026-01-29 13:33:53 info: Server running on port 3000
+2026-01-29 14:48:45 warn: MongoDB disconnected
+2026-01-29 14:52:33 warn: MongoDB disconnected
+2026-01-29 22:06:08 warn: MongoDB disconnected
+2026-01-29 22:17:14 warn: MongoDB disconnected
+2026-01-30 07:43:48 warn: MongoDB disconnected
+2026-01-30 07:51:29 warn: MongoDB disconnected
+2026-01-30 08:13:55 warn: MongoDB disconnected
+2026-01-30 08:25:25 warn: MongoDB disconnected
+2026-01-30 08:46:10 warn: MongoDB disconnected
+2026-01-30 08:56:34 warn: MongoDB disconnected
+2026-01-30 11:15:46 warn: MongoDB disconnected
+2026-01-30 14:10:22 warn: MongoDB disconnected
+2026-01-30 14:20:51 warn: MongoDB disconnected
+2026-01-30 14:34:18 warn: MongoDB disconnected
+2026-01-30 14:41:21 warn: MongoDB disconnected
+2026-01-30 14:48:04 warn: MongoDB disconnected
+2026-01-30 14:55:19 warn: MongoDB disconnected
+2026-01-30 19:31:58 warn: MongoDB disconnected
+2026-01-30 19:40:48 warn: MongoDB disconnected
+2026-01-31 11:33:57 warn: MongoDB disconnected
+2026-01-31 11:40:07 warn: MongoDB disconnected
+2026-01-31 11:47:34 warn: MongoDB disconnected
+2026-01-31 17:12:37 warn: MongoDB disconnected
+2026-01-31 17:25:55 warn: MongoDB disconnected
+2026-01-31 17:43:41 warn: MongoDB disconnected
+2026-01-31 17:49:23 warn: MongoDB disconnected
+2026-01-31 17:51:29 warn: MongoDB disconnected
+2026-01-31 19:52:47 warn: MongoDB disconnected
+2026-01-31 19:55:19 warn: MongoDB disconnected
+2026-01-31 20:01:04 warn: MongoDB disconnected
+2026-01-31 20:12:21 warn: MongoDB disconnected
+2026-02-01 10:45:42 warn: MongoDB disconnected
+2026-02-01 10:54:56 warn: MongoDB disconnected
+2026-02-01 10:59:09 warn: MongoDB disconnected
+2026-02-01 11:25:48 warn: MongoDB disconnected
+2026-02-01 11:30:06 warn: MongoDB disconnected
+2026-02-01 11:37:39 warn: MongoDB disconnected
+2026-02-01 11:44:18 warn: MongoDB disconnected
+2026-02-01 11:47:30 warn: MongoDB disconnected
+2026-02-01 14:33:00 warn: MongoDB disconnected
+2026-02-01 14:42:14 warn: MongoDB disconnected
+2026-02-01 14:48:22 warn: MongoDB disconnected
+2026-02-01 15:03:45 warn: MongoDB disconnected
+2026-02-01 15:18:39 warn: MongoDB disconnected
+2026-02-01 15:29:26 warn: MongoDB disconnected
+2026-02-01 15:35:16 warn: MongoDB disconnected
+2026-02-01 15:53:17 info: Connected to MongoDB successfully
+2026-02-01 15:53:17 info: Roles and permissions already seeded, skipping...
+2026-02-01 15:53:18 info: Admin user already exists, skipping admin seed...
+2026-02-01 15:53:18 info: Server running on port 3000
+2026-02-02 07:52:07 warn: MongoDB disconnected
+2026-02-02 08:50:12 warn: MongoDB disconnected
+2026-02-02 10:24:03 warn: MongoDB disconnected
+2026-02-02 10:28:54 warn: MongoDB disconnected
+2026-02-02 10:43:37 warn: MongoDB disconnected
+2026-02-02 10:59:27 warn: MongoDB disconnected
+2026-02-02 14:12:08 warn: MongoDB disconnected
+2026-02-02 14:43:23 warn: MongoDB disconnected
+2026-02-02 14:52:25 warn: MongoDB disconnected
+2026-02-04 20:35:40 warn: MongoDB disconnected
+2026-02-04 20:44:40 warn: MongoDB disconnected
+2026-02-04 20:49:39 warn: MongoDB disconnected
+2026-02-04 20:58:29 warn: MongoDB disconnected
+2026-02-04 21:14:04 warn: MongoDB disconnected
+2026-02-04 21:22:21 warn: MongoDB disconnected
+2026-02-04 21:29:59 warn: MongoDB disconnected
+2026-02-04 21:41:42 warn: MongoDB disconnected
+2026-02-04 21:58:17 warn: MongoDB disconnected
+2026-02-04 22:08:19 warn: MongoDB disconnected
+2026-02-05 07:16:13 warn: MongoDB disconnected
+2026-02-05 07:39:23 warn: MongoDB disconnected
+2026-02-05 07:44:20 warn: MongoDB disconnected
+2026-02-05 07:51:35 warn: MongoDB disconnected
+2026-02-05 07:57:59 warn: MongoDB disconnected
+2026-02-05 08:11:58 warn: MongoDB disconnected
+2026-02-05 08:20:21 warn: MongoDB disconnected
+2026-02-05 08:26:01 warn: MongoDB disconnected
+2026-02-05 08:34:16 warn: MongoDB disconnected
+2026-02-05 08:45:18 warn: MongoDB disconnected
+2026-02-05 08:50:37 warn: MongoDB disconnected
+2026-02-05 08:57:26 warn: MongoDB disconnected
+2026-02-05 09:38:59 warn: MongoDB disconnected
+2026-02-05 09:49:31 warn: MongoDB disconnected
+2026-02-05 09:52:46 warn: MongoDB disconnected
+2026-02-05 09:58:40 warn: MongoDB disconnected
+2026-02-05 10:04:44 warn: MongoDB disconnected
+2026-02-05 10:11:27 warn: MongoDB disconnected
+2026-02-05 10:19:04 warn: MongoDB disconnected
+2026-02-05 10:33:21 warn: MongoDB disconnected
+2026-02-05 10:41:41 warn: MongoDB disconnected
+2026-02-05 10:57:11 warn: MongoDB disconnected
+2026-02-05 12:39:25 warn: MongoDB disconnected
+2026-02-05 13:25:47 warn: MongoDB disconnected
+2026-02-05 13:30:15 warn: MongoDB disconnected
+2026-02-05 13:52:00 warn: MongoDB disconnected
+2026-02-05 14:15:39 warn: MongoDB disconnected
+2026-02-05 14:18:15 warn: MongoDB disconnected
+2026-02-05 14:29:41 warn: MongoDB disconnected
+2026-02-05 14:42:52 warn: MongoDB disconnected
+2026-02-05 14:49:42 warn: MongoDB disconnected
+2026-02-06 08:07:19 warn: MongoDB disconnected
+2026-02-06 08:13:52 info: Connected to MongoDB successfully
+2026-02-06 08:13:52 info: Roles and permissions already seeded, skipping...
+2026-02-06 08:13:52 info: Admin user already exists, skipping admin seed...
+2026-02-06 08:13:52 info: Server running on port 3000
+2026-02-06 18:34:45 warn: MongoDB disconnected
+2026-02-06 18:43:37 info: Connected to MongoDB successfully
+2026-02-06 18:43:37 info: Roles and permissions already seeded, skipping...
+2026-02-06 18:43:37 info: Admin user already exists, skipping admin seed...
+2026-02-06 18:43:37 info: Server running on port 3000
+2026-02-06 19:55:20 warn: MongoDB disconnected
+2026-02-06 20:03:35 warn: MongoDB disconnected
+2026-02-07 17:35:53 info: Connected to MongoDB successfully
+2026-02-07 17:35:53 info: Roles and permissions already seeded, skipping...
+2026-02-07 17:35:53 info: Admin user already exists, skipping admin seed...
+2026-02-07 17:35:53 info: Server running on port 3000
+2026-02-08 10:09:51 info: Connected to MongoDB successfully
+2026-02-08 10:09:51 info: Roles and permissions already seeded, skipping...
+2026-02-08 10:09:51 info: Admin user already exists, skipping admin seed...
+2026-02-08 10:09:51 info: Server running on port 3000
+2026-02-08 17:32:00 warn: MongoDB disconnected
+2026-02-08 17:36:44 warn: MongoDB disconnected
+2026-02-08 22:42:35 info: Connected to MongoDB successfully
+2026-02-08 22:42:35 info: Roles and permissions already seeded, skipping...
+2026-02-08 22:42:36 info: Admin user already exists, skipping admin seed...
+2026-02-08 22:42:36 info: Server running on port 3000
+2026-02-10 08:40:46 warn: MongoDB disconnected
+2026-02-10 10:20:15 warn: MongoDB disconnected
+2026-02-10 10:29:39 warn: MongoDB disconnected
+2026-02-10 10:34:21 warn: MongoDB disconnected
+2026-02-10 15:02:33 warn: MongoDB disconnected
+2026-02-10 15:29:14 warn: MongoDB disconnected
+2026-02-10 23:22:30 warn: MongoDB disconnected
+2026-02-11 00:18:32 warn: MongoDB disconnected
+2026-02-11 00:27:02 warn: MongoDB disconnected
+2026-02-12 07:22:10 warn: MongoDB disconnected
+2026-02-12 07:57:53 warn: MongoDB disconnected
+2026-02-12 08:09:09 warn: MongoDB disconnected
+2026-02-12 08:56:32 warn: MongoDB disconnected
+2026-02-12 09:08:15 warn: MongoDB disconnected
+2026-02-12 10:39:11 warn: MongoDB disconnected
+2026-02-12 10:57:17 warn: MongoDB disconnected
+2026-02-12 15:01:54 warn: MongoDB disconnected
+2026-02-13 10:37:55 warn: MongoDB disconnected
+2026-02-13 18:43:30 warn: MongoDB disconnected
+2026-02-13 18:57:36 warn: MongoDB disconnected
+2026-02-13 20:24:40 warn: MongoDB disconnected
+2026-02-13 20:38:51 warn: MongoDB disconnected
+2026-02-16 13:55:29 warn: MongoDB disconnected
+2026-02-17 23:47:26 warn: MongoDB disconnected
+2026-02-17 23:51:43 warn: MongoDB disconnected
+2026-02-18 12:22:38 warn: MongoDB disconnected
+2026-02-18 12:27:12 warn: MongoDB disconnected
+2026-02-21 12:51:46 warn: MongoDB disconnected
+2026-02-21 13:03:18 warn: MongoDB disconnected
+2026-02-21 13:12:14 warn: MongoDB disconnected
+2026-02-21 14:50:25 info: Connected to MongoDB successfully
+2026-02-21 14:50:25 info: Roles and permissions already seeded, skipping...
+2026-02-21 14:50:25 info: Admin user already exists, skipping admin seed...
+2026-02-21 14:50:25 info: Server running on port 3000
+2026-02-24 09:10:38 warn: MongoDB disconnected
+2026-02-24 09:13:13 warn: MongoDB disconnected
+2026-02-24 09:53:07 warn: MongoDB disconnected
+2026-02-24 11:41:24 warn: MongoDB disconnected
+2026-02-24 12:23:55 warn: MongoDB disconnected
+2026-02-24 22:25:36 warn: MongoDB disconnected
+2026-02-24 22:46:45 warn: MongoDB disconnected
+2026-02-24 23:44:48 warn: MongoDB disconnected
+2026-02-25 09:14:10 info: Connected to MongoDB successfully
+2026-02-25 09:14:10 info: Roles and permissions already seeded, skipping...
+2026-02-25 09:14:10 info: Admin user already exists, skipping admin seed...
+2026-02-25 09:14:10 info: Server running on port 3000
+2026-02-26 11:13:43 warn: MongoDB disconnected
+2026-02-26 12:39:19 warn: MongoDB disconnected
+2026-02-26 17:00:49 warn: MongoDB disconnected
+2026-02-26 17:19:40 warn: MongoDB disconnected
+2026-02-27 09:55:36 warn: MongoDB disconnected
+2026-02-27 11:37:29 warn: MongoDB disconnected
+2026-02-27 11:42:16 warn: MongoDB disconnected
+2026-02-27 11:53:30 warn: MongoDB disconnected
+2026-02-27 12:14:41 warn: MongoDB disconnected
+2026-02-27 13:52:07 warn: MongoDB disconnected
+2026-02-27 21:43:02 warn: MongoDB disconnected
+2026-02-28 15:54:35 warn: MongoDB disconnected
+2026-03-01 12:30:46 warn: MongoDB disconnected
+2026-03-01 12:36:20 warn: MongoDB disconnected
+2026-03-01 12:58:21 warn: MongoDB disconnected
+2026-03-01 13:04:18 warn: MongoDB disconnected
+2026-03-01 14:16:45 warn: MongoDB disconnected
+2026-03-01 14:23:45 warn: MongoDB disconnected
+2026-03-01 15:03:11 warn: MongoDB disconnected
+2026-03-01 15:11:11 warn: MongoDB disconnected
+2026-03-01 16:35:11 warn: MongoDB disconnected
+2026-03-01 17:13:10 warn: MongoDB disconnected
+2026-03-01 17:45:40 warn: MongoDB disconnected
+2026-03-01 18:48:55 warn: MongoDB disconnected
+2026-03-01 19:38:34 warn: MongoDB disconnected
+2026-03-01 20:19:05 warn: MongoDB disconnected
+2026-03-02 09:22:43 warn: MongoDB disconnected
+2026-03-02 14:35:51 info: Connected to MongoDB successfully
+2026-03-02 14:35:51 info: Roles and permissions already seeded, skipping...
+2026-03-02 14:35:51 info: Admin user already exists, skipping admin seed...
+2026-03-02 14:35:51 info: Server running on port 3000
+2026-03-04 19:55:53 warn: MongoDB disconnected
+2026-03-04 20:36:04 warn: MongoDB disconnected
+2026-03-04 21:45:56 warn: MongoDB disconnected
+2026-03-04 22:27:14 warn: MongoDB disconnected
+2026-03-04 22:58:16 warn: MongoDB disconnected
+2026-03-04 23:55:59 warn: MongoDB disconnected
+2026-03-05 01:05:01 warn: MongoDB disconnected
+2026-03-05 11:43:25 warn: MongoDB disconnected
+2026-03-05 12:11:05 warn: MongoDB disconnected
+2026-03-05 12:38:59 warn: MongoDB disconnected
+2026-03-05 13:50:45 warn: MongoDB disconnected
+2026-03-05 14:06:54 warn: MongoDB disconnected
+2026-03-07 17:47:04 info: Connected to MongoDB successfully
+2026-03-07 17:47:04 info: Roles and permissions already seeded, skipping...
+2026-03-07 17:47:04 info: Admin user already exists, skipping admin seed...
+2026-03-07 17:47:04 info: Server running on port 3000
